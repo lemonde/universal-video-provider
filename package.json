@@ -1,0 +1,34 @@
+{
+  "name": "universal-video-provider",
+  "version": "1.0.0",
+  "description": "es6 client and node universal video provider",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JBustin/universal-video-provider.git"
+  },
+  "author": "bourrousse@lemonde.fr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JBustin/universal-video-provider/issues"
+  },
+  "homepage": "https://github.com/JBustin/universal-video-provider#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.2.0",
+    "proxyquire": "^1.7.11",
+    "sinon": "^2.1.0"
+  },
+  "dependencies": {
+    "es6-promise": "^4.1.0",
+    "moment": "^2.18.1",
+    "node-xml-lite": "^0.0.7",
+    "universal-fetch": "^1.0.0"
+  }
+}

@@ -1,0 +1,39 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<rss version = "2.0" xmlns:media = "http://search.yahoo.com/mrss/" xmlns:ina="http://www.ina.fr/mrss">
+    <channel>
+        <id>CAF91028911</id>
+        <title><![CDATA[Laine et Haute Couture]]></title>
+        <description><![CDATA[Présentation de modèles Haute Couture pour le printemps et l'été.]]></description>
+        <link><![CDATA[https://www.ina.fr/video/CAF91028911]]></link>
+        <pubDate>Fri, 10 Apr 1970 13:00:07 +0100</pubDate>
+        <category>Journal télévisé</category>
+        <item>
+            <guid isPermaLink="false">CAF91028911</guid>
+            <title><![CDATA[Laine et Haute Couture]]></title>
+            <description><![CDATA[Présentation de modèles Haute Couture pour le printemps et l'été.]]></description>
+            <pubDate>Fri, 10 Apr 1970 13:00:07 +0100</pubDate>
+            <link><![CDATA[https://www.ina.fr/video/CAF91028911]]></link>
+            <category>ina|</category>
+            <category domain="fr.ina.player.ads"></category>
+            <category domain="fr.ina.player.teasing">0</category>
+            <category domain="fr.ina.player.premium">0</category>
+            <category domain="fr.ina.player.svod">0</category>
+            <media:content url="https://mp4.ina.fr/lecture/lire/securekey/ivptTK1K7GDGH3LRBrHSC0lVND5BYHmrSCh603uV6HU7NaNwW-TV0UVRy4DIHfFM7p2KHvsehVa59E7iO96S65njuun2j4jwF0iab68SM9Y.mp4" duration="290" medium="video" channels="tagas" >
+                <media:price type="no-rent" info="http://boutique.ina.fr/notice/voir/id_notice/CAF91028911" price="0 €" currency="EUR" />
+                <media:player url="https://mp4.ina.fr/lecture/lire/securekey/ivptTK1K7GDGH3LRBrHSC0lVND5BYHmrSCh603uV6HU7NaNwW-TV0UVRy4DIHfFM7p2KHvsehVa59E7iO96S65njuun2j4jwF0iab68SM9Y.mp4" height="200" width="400"/>
+                                <media:hq url="" />
+                                                <media:mq url="https://mp4.ina.fr/lecture/lire/securekey/ivptTK1K7GDGH3LRBrHSC0lVND5BYHmrSCh603uV6HU7NaNwW-TV0UVRy4DIHfFM7p2KHvsehVZL4FZcPGwj-_d0DShNXgWIF0iab68SM9Y.mp4" />
+                                                <media:bq url="https://mp4.ina.fr/lecture/lire/securekey/ivptTK1K7GDGH3LRBrHSC0lVND5BYHmrSCh603uV6HU7NaNwW-TV0UVRy4DIHfFMamO1Ig3WyPlDVGtqq6pp4YnOyFs4SxcB.mp4" />
+                                <media:thumbnail url="https://www.ina.fr/images_v2/141x107/CAF91028911.jpeg" height="107" width="141"/>
+                <media:thumbnail url="https://www.ina.fr/images_v2/512x384/CAF91028911.jpeg" height="384" width="512"/>
+                                <media:credit role="producer">Office national de radiodiffusion télévision française</media:credit>
+                                <media:restriction type="uri" relationship="allow" ><![CDATA[http://ina.fr]]></media:restriction>
+                <media:restriction type="sharing" relationship="allow" >ALL</media:restriction>
+                <media:restriction type="social_sharing" relationship="allow" />
+                <media:restriction type="ads" relationship="allow">OUI</media:restriction>
+                <media:restriction type="warning" relationship="deny"></media:restriction>
+            </media:content>
+        </item>
+    </channel>
+</rss>
