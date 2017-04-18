@@ -2,11 +2,6 @@ const _ = require('lodash');
 const formatter = require('../formatter').video;
 const fetch = require('../fetch');
 
-const headers = {
-  'X-Huit-Version': undefined,
-  'X-App-Uuid': undefined
-};
-
 /**
  * Digiteka api endpoints
  */
@@ -23,7 +18,7 @@ const searchUrl = (query, perPage, page) => (
   `q/${query}/mode/last`
 );
 
-const fetchVideo = videoId => fetch(fetchUrl(videoId), { headers, cache: true });
+const fetchVideo = videoId => fetch(fetchUrl(videoId), { headers: provider.headers, cache: true });
 
 /**
  * Extractors
@@ -36,6 +31,7 @@ const extractPlayerUrl = iframeTag => /src="(?:https?:)([^"]*)/.exec(iframeTag)[
 const provider = {
   name: 'digiteka',
   label: 'Digiteka',
+  headers: {},
   zoneId: null,
   mdtk: null,
   mainCatalog: null,
@@ -78,7 +74,7 @@ const provider = {
   search: (query, offset = 0) => (
     fetch(
       searchUrl(query, this.itemsPerPage, 1 + Math.ceil(offset / this.itemsPerPage)),
-      { timeout: 10000, headers }
+      { timeout: 10000, headers: this.headers }
     )
     .then(res => _.get(res, 'data.results', []).map(
       ({

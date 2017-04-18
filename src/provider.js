@@ -50,3 +50,7 @@ module.exports.getVideoFromId = getVideoFromId;
 module.exports.getSupportedProviders = () => _.map(providers, 'name');
 module.exports.getProviderFromName = name => _.find(providers, { name });
 module.exports.extendProvider = (name, obj) => _.extend(_.find(providers, { name }), obj);
+module.exports.extendProviders = (
+  obj => exports.getSupportedProviders()
+    .map(name => exports.extendProvider(name, obj))
+);

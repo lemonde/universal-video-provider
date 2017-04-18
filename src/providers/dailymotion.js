@@ -1,14 +1,10 @@
 const _ = require('lodash');
 const fetch = require('../fetch');
 
-const headers = {
-  'X-Huit-Version': undefined,
-  'X-App-Uuid': undefined
-};
-
 module.exports = {
   name: 'dailymotion',
   label: 'Dailymotion',
+  headers: {},
   videoIdExtractRegExps: [
     // NOTE : behind the _ in the id, everything is discarded by dailymotion
     // standard url
@@ -27,17 +23,23 @@ module.exports = {
   ),
 
   getTitle: videoId => (
-    fetch(`https://api.dailymotion.com/video/${videoId}?fields=title`, { method: 'GET', headers })
+    fetch(`https://api.dailymotion.com/video/${videoId}?fields=title`, {
+      method: 'GET', headers: this.headers
+    })
     .then(result => _.get(result, 'data.title'))
   ),
 
   getDescription: videoId => (
-    fetch(`https://api.dailymotion.com/video/${videoId}?fields=description`, { method: 'GET', headers })
+    fetch(`https://api.dailymotion.com/video/${videoId}?fields=description`, {
+      method: 'GET', headers: this.headers
+    })
     .then(result => _.get(result, 'data.description'))
   ),
 
   getDuration: videoId => (
-    fetch(`https://api.dailymotion.com/video/${videoId}?fields=duration`, { method: 'GET', headers })
+    fetch(`https://api.dailymotion.com/video/${videoId}?fields=duration`, {
+      method: 'GET', headers: this.headers
+    })
     .then(result => _.get(result, 'data.duration'))
   ),
 

@@ -1,11 +1,6 @@
 const _ = require('lodash');
 const fetch = require('../fetch');
 
-const headers = {
-  'X-Huit-Version': undefined,
-  'X-App-Uuid': undefined
-};
-
 /**
  * Url api v3
  */
@@ -13,7 +8,10 @@ const fetchUrl = (videoId, part) => (
   `https://www.googleapis.com/youtube/v3/videos?part=${part}&id=${videoId}&key=${provider.apiKey}`
 );
 
-const fetchVideo = (videoId, part) => fetch(fetchUrl(videoId, part), { headers, cache: true });
+const fetchVideo = (videoId, part) => fetch(
+  fetchUrl(videoId, part),
+  { headers: provider.headers, cache: true }
+);
 
 /**
  * Convert duration ISO 8601 to seconds
@@ -32,6 +30,7 @@ const convertDurationToSc = (duration) => {
 const provider = {
   name: 'youtube',
   label: 'Youtube',
+  headers: {},
   apiKey: null,
   videoIdExtractRegExps: [
     // standard url

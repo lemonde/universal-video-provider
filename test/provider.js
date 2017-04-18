@@ -158,4 +158,33 @@ describe('Provider', () => {
       expect(youtubeProvider.fakeFunc).to.be.a.function;
     });
   });
+
+  describe('#extend providers', () => {
+    it('should extend all providers', () => {
+      provider.extendProviders({
+        headers: {
+          'Access-Control-Allow-Headers': 'x-app-uuid,x-huit-version',
+          'Access-Control-Allow-Methods': 'GET',
+          'x-huit-version': undefined,
+          'x-app-uuid': undefined
+        }
+      });
+
+      expect(provider.getProviderFromName('dailymotion').headers)
+      .to.eql({
+        'Access-Control-Allow-Headers': 'x-app-uuid,x-huit-version',
+        'Access-Control-Allow-Methods': 'GET',
+        'x-huit-version': undefined,
+        'x-app-uuid': undefined
+      });
+
+      expect(provider.getProviderFromName('youtube').headers)
+      .to.eql({
+        'Access-Control-Allow-Headers': 'x-app-uuid,x-huit-version',
+        'Access-Control-Allow-Methods': 'GET',
+        'x-huit-version': undefined,
+        'x-app-uuid': undefined
+      });
+    });
+  });
 });

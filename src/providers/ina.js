@@ -2,11 +2,6 @@ const _ = require('lodash');
 const xml = require('node-xml-lite').parseString;
 const fetch = require('../fetch');
 
-const headers = {
-  'X-Huit-Version': undefined,
-  'X-App-Uuid': undefined
-};
-
 const find = (xmlObj, pathStr) => {
   const path = pathStr.split('.');
   return walker(xmlObj, path);
@@ -20,6 +15,7 @@ const walker = (xmlObj, path) => {
 module.exports = {
   name: 'ina',
   label: 'INA',
+  headers: {},
   videoIdExtractRegExps: [
     // ex. http://www.ina.fr/video/NA00001285844/monopoly-nantais-video.html
     /^(?:https?:)?\/\/(?:www\.)?ina\.fr\/video\/([^?&#/]+)/i
@@ -30,17 +26,17 @@ module.exports = {
   ),
 
   getTitle: videoId => (
-    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers })
+    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: this.headers })
     .then(result => find(xml(result.data), 'channel.title').childs[0])
   ),
 
   getDescription: videoId => (
-    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers })
+    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: this.headers })
     .then(result => find(xml(result.data), 'channel.description').childs[0])
   ),
 
   getDuration: videoId => (
-    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers })
+    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: this.headers })
     .then(result => find(xml(result.data), 'channel.item.media:content').attrib.duration)
   ),
 
