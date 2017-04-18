@@ -1,8 +1,9 @@
 const _ = require('lodash');
 const moment = require('moment');
-const dailymotion = require('./providers')('dailymotion');
-const ina = require('./providers')('ina');
-const youtube = require('./providers')('youtube');
+const dailymotion = require('./providers/dailymotion');
+const ina = require('./providers/ina');
+const youtube = require('./providers/youtube');
+// const digiteka = require('./providers/digiteka');
 
 const providers = [dailymotion, ina, youtube];
 
@@ -38,9 +39,9 @@ function getVideoFromId(provider, videoId) {
   .then(([title, description, duration, thumbnailUrl, playerUrl]) => ({
     title,
     description,
-    duration: formatDuration(duration),
     thumbnailUrl,
     playerUrl,
+    duration: formatDuration(duration),
     metadata: `<iframe src=${playerUrl} frameborder="0"></iframe>`
   }));
 }
@@ -61,5 +62,4 @@ module.exports.formatDuration = formatDuration;
 module.exports.getVideoFromId = getVideoFromId;
 module.exports.getSupportedProviders = () => _.map(providers, 'name');
 module.exports.getProviderFromName = name => _.find(providers, { name });
-module.exports.addProvider = provider => providers.push(provider);
 module.exports.extendProvider = (name, obj) => _.extend(_.find(providers, { name }), obj);

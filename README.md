@@ -40,14 +40,25 @@ ES6
 
 ## Support video platforms
 
-`youtube, dailymotion, ina`
-
-You can add [video providers](https://github.com/lemonde/universal-video-provider#addprovider).
+`youtube, dailymotion, ina, digiteka`
 
 For `youtube`, you have to [extend the current provider](https://github.com/lemonde/universal-video-provider#extendprovider) with an apiKey :
 
 ```js
 videoProvider.extendProvider('youtube', { apiKey: 'yourKey' });
+```
+
+For `digiteka`, you have to [extend the current provider](https://github.com/lemonde/universal-video-provider#extendprovider) with credentials :
+
+```js
+videoProvider.extendProvider('digiteka', {
+  // id of the site lemonde.fr on digiteka
+  mdtk: '123456',
+  mainCatalog: '5dmpl',
+  // When playing a video, this indicates that the video is played
+  // in a back-office (to avoid ads, and not count it as a view)
+  zoneId: 34
+});
 ```
 
 ## providerVideo API
@@ -144,30 +155,8 @@ Return: [String]
 
 ```
 videoProvider.getSupportedProviders();
-// ['dailymotion', 'ina', 'youtube']
+// ['dailymotion', 'ina', 'youtube', 'digiteka']
 ```
-
-### addProvider
-
-Add a new provider.
-
-Injected tools: [lodash](https://lodash.com/docs/4.17.4), [xml parser](https://github.com/hgourvest/node-xml-lite#parse-a-string), universal fetch
-
-```js
-videoProvider.addProvider((_, xml, fetch) => ({
-  name: 'vimeo'
-  label: 'Vimeo',
-  videoIdExtractRegExps: [],
-  getThumbnailUrl: videoId => Promise.resolve('thumbnailUrl'),
-  getTitle: videoId => Promise.resolve('title'),
-  getDescription: videoId => Promise.resolve('description'),
-  getDuration: videoId => Promise.resolve('duration'),
-  getPlayerUrl: videoId => Promise.resolve('playerUrl')
-}));
-```
-
-This fields should be declared.
-You can add customize fields (constant or functions).
 
 ### extendProvider
 

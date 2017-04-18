@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const youtube = require('../../src/providers')('youtube');
+const youtube = require('../../src/providers/youtube');
 
 describe('Youtube provider regexp', () => {
   it('should parse standard url', () => {

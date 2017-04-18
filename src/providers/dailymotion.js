@@ -1,9 +1,12 @@
+const _ = require('lodash');
+const fetch = require('../fetch');
+
 const headers = {
   'X-Huit-Version': undefined,
   'X-App-Uuid': undefined
 };
 
-module.exports = (_, xml, fetch) => ({
+module.exports = {
   name: 'dailymotion',
   label: 'Dailymotion',
   videoIdExtractRegExps: [
@@ -41,4 +44,4 @@ module.exports = (_, xml, fetch) => ({
   getPlayerUrl: videoId => (
     new Promise(resolve => resolve(`//www.dailymotion.com/embed/video/${videoId}`))
   )
-});
+};

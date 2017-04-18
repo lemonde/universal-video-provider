@@ -18,16 +18,14 @@ const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 
 describe('Ina provider', () => {
-  let provider;
   let ina;
 
   before((done) => {
     fs.readFile(path.join(__dirname, '../fixtures/ina.xml'), (err, data) => {
       if (err) return done(err);
-      provider = proxyquire('../../src/providers', {
+      ina = proxyquire('../../src/providers/ina', {
         '../fetch': sinon.stub().returns(Promise.resolve({ data }))
       });
-      ina = provider('ina');
       return done();
     });
   });

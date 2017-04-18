@@ -18,7 +18,10 @@ describe('Provider', () => {
   });
 
   const provider = proxyquire('../src/provider', {
-    './providers': providerName => fakeProvider(providerName)
+    './providers/dailymotion': fakeProvider('dailymotion'),
+    './providers/youtube': fakeProvider('youtube'),
+    './providers/ina': fakeProvider('ina'),
+    // './providers/digiteka': fakeProvider('digiteka')
   });
 
   describe('#extract video', () => {
@@ -145,14 +148,6 @@ describe('Provider', () => {
   describe('#get supported providers', () => {
     it('should return a list', () => {
       expect(provider.getSupportedProviders()).to.eql(['dailymotion', 'ina', 'youtube']);
-    });
-  });
-
-  describe('#add a provider', () => {
-    it('should add digiteka as provider', () => {
-      provider.addProvider(fakeProvider('digiteka'));
-      expect(provider.extractVideoId(fakeProvider('digiteka'), 'digiteka:10'))
-      .to.equal('10');
     });
   });
 

@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const dailymotion = require('../../src/providers')('dailymotion');
+const dailymotion = require('../../src/providers/dailymotion');
 
 describe('Dailymotion provider regexp', () => {
   it('should parse standard url', () => {
