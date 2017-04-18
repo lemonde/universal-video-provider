@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
-const _ = require('lodash');
 const fixtures = require('../fixtures/digiteka');
 
 describe('Digiteka provider', () => {
@@ -89,9 +88,24 @@ describe('Digiteka provider', () => {
 
     it('should return a collection of videos', (done) => {
       digiteka.search('word to search')
-      .then((res) => {
-        expect(_.get(res, 'data.nb_result')).to.equal(504);
-        expect(_.get(res, 'data.results.length')).to.equal(10);
+      .then((results) => {
+        expect(results.length).to.equal(10);
+        expect(results[0]).to.eql({
+          description: 'C’est l\'une des attaques les plus meurtrières ' +
+          'en six ans de guerre en Syrie : samedi 15 avril, 126 personnes, ' +
+          'dont 68 enfants, ont été tuées dans un attentat-suicide à Rachidine. ' +
+          'Un kamikaze s’est fait exploser alors que Des centaines de familles ' +
+          'venues de villages prorégime attendaient près de bus, sous la ' +
+          'surveillance de combattants anti-Assad, d’être évacuées en zone ' +
+          'loyaliste, dans le cadre d’un accord d’échange.',
+          duration: '00:49',
+          metadata: '<iframe src=//www.ultimedia.com/deliver/generic/iframe/mdtk/01637594/zone/34/src/8f3q8q frameborder="0"></iframe>',
+          playerUrl: '//www.ultimedia.com/deliver/generic/iframe/mdtk/01637594/zone/34/src/8f3q8q',
+          provider: 'digiteka',
+          thumbnailUrl: '//medialb.ultimedia.com/multi/35fzl/8f3q8q-L.jpg',
+          title: 'Syrie : carnage après un attentat-suicide contre un convoi de civils évacués',
+          videoId: '8f3q8q'
+        });
         done();
       })
       .catch(done);

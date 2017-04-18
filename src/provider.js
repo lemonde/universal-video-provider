@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const moment = require('moment');
+const formatter = require('./formatter').video;
 const dailymotion = require('./providers/dailymotion');
 const ina = require('./providers/ina');
 const youtube = require('./providers/youtube');
@@ -12,13 +12,6 @@ function extractVideoId(provider, url) {
     (videoId, regexp) => videoId || (regexp.test(url) ? regexp.exec(url)[1] : null),
     null
   );
-}
-
-function formatDuration(duration, pattern = 'HH:mm:ss') {
-  return moment.unix(duration)
-    .utc()
-    .format(pattern)
-    .replace(/^00:/, '');
 }
 
 function getProviderFromUrl(url) {
@@ -36,14 +29,9 @@ function getVideoFromId(provider, videoId) {
     provider.getThumbnailUrl(videoId),
     provider.getPlayerUrl(videoId)
   ])
-  .then(([title, description, duration, thumbnailUrl, playerUrl]) => ({
-    title,
-    description,
-    thumbnailUrl,
-    playerUrl,
-    duration: formatDuration(duration),
-    metadata: `<iframe src=${playerUrl} frameborder="0"></iframe>`
-  }));
+  .then(([title, description, duration, thumbnailUrl, playerUrl]) => formatter(
+    provider.name, videoId, { title, description, duration, thumbnailUrl, playerUrl }
+  ));
 }
 
 module.exports.getVideoFromUrl = (url) => {
@@ -58,7 +46,6 @@ module.exports.getVideoFromUrl = (url) => {
 
 module.exports.getProviderFromUrl = getProviderFromUrl;
 module.exports.extractVideoId = extractVideoId;
-module.exports.formatDuration = formatDuration;
 module.exports.getVideoFromId = getVideoFromId;
 module.exports.getSupportedProviders = () => _.map(providers, 'name');
 module.exports.getProviderFromName = name => _.find(providers, { name });

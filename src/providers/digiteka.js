@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const formatter = require('../formatter').video;
 const fetch = require('../fetch');
 
 const headers = {
@@ -79,6 +80,17 @@ const provider = {
       searchUrl(query, this.itemsPerPage, 1 + Math.ceil(offset / this.itemsPerPage)),
       { timeout: 10000, headers }
     )
+    .then(res => _.get(res, 'data.results', []).map(
+      ({
+        video_id, title, description, lengthvideo, image_high, iframe
+      }) => formatter('digiteka', video_id, {
+        title,
+        description,
+        duration: lengthvideo,
+        thumbnailUrl: extractThumbnailUrl(image_high),
+        playerUrl: extractPlayerUrl(iframe)
+      })
+    ))
   )
 };
 

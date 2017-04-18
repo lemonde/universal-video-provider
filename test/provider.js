@@ -41,18 +41,6 @@ describe('Provider', () => {
     });
   });
 
-  describe('#format duration', () => {
-    it('should return a long formatted time from sc', () => {
-      expect(provider.formatDuration(4555))
-      .to.equal('01:15:55');
-    });
-
-    it('should return a short formatted time from sc', () => {
-      expect(provider.formatDuration(55))
-      .to.equal('00:55');
-    });
-  });
-
   describe('#get provider from url', () => {
     it('should find from dailymotion url', () => {
       const result = provider.getProviderFromUrl('dailymotion:10');
@@ -84,7 +72,9 @@ describe('Provider', () => {
           duration: '00:55',
           thumbnailUrl: 'dailymotion:thumbnailUrl',
           playerUrl: 'dailymotion:playerUrl',
-          metadata: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>'
+          metadata: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>',
+          provider: 'dailymotion',
+          videoId: '10'
         });
 
         done();
@@ -103,7 +93,9 @@ describe('Provider', () => {
           duration: '00:55',
           thumbnailUrl: 'dailymotion:thumbnailUrl',
           playerUrl: 'dailymotion:playerUrl',
-          metadata: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>'
+          metadata: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>',
+          provider: 'dailymotion',
+          videoId: '10'
         });
 
         done();
@@ -120,7 +112,9 @@ describe('Provider', () => {
           duration: '00:55',
           thumbnailUrl: 'youtube:thumbnailUrl',
           playerUrl: 'youtube:playerUrl',
-          metadata: '<iframe src=youtube:playerUrl frameborder="0"></iframe>'
+          metadata: '<iframe src=youtube:playerUrl frameborder="0"></iframe>',
+          provider: 'youtube',
+          videoId: '10'
         });
 
         done();

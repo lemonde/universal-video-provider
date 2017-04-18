@@ -116,25 +116,6 @@ const videoId = videoProvider.extractVideoId(provider, 'http://www.youtube.com/v
 // 'ky6CRSBcf98'
 ```
 
-### formatDuration
-
-Format duration returns by provider.
-
-```
-Params: duration (seconds), pattern (default: `HH:mm:ss`)
-Return: String
-Example: `01:10:15`
-Other example: `10:20`
-```
-
-```js
-const provider = videoProvider.getProviderFromUrl('http://www.youtube.com/v/ky6CRSBcf98');
-
-provider.getDuration()
-.then(duration => console.log(provider.formatDuration(duration)))
-.catch(err => console.error(err));
-```
-
 ### getProviderByName
 
 Get a specific provider by his name
