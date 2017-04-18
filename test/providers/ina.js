@@ -1,16 +1,3 @@
-/*
-  view-source:http://player.ina.fr/notices/AFE00003987.mrss
-  CAF91028911
-  AFE00003987
-  CAF90018593
-  PUB2346291074
-  PUB2346291075
-  PUB2779370037
-  PUB1396557122
-  PUB3015922061
-  CAB86003508
-  PUB3784079081
-*/
 const path = require('path');
 const fs = require('fs');
 const expect = require('chai').expect;

@@ -21,7 +21,7 @@ describe('Provider', () => {
     './providers/dailymotion': fakeProvider('dailymotion'),
     './providers/youtube': fakeProvider('youtube'),
     './providers/ina': fakeProvider('ina'),
-    // './providers/digiteka': fakeProvider('digiteka')
+    './providers/digiteka': fakeProvider('digiteka')
   });
 
   describe('#extract video', () => {
@@ -147,7 +147,7 @@ describe('Provider', () => {
 
   describe('#get supported providers', () => {
     it('should return a list', () => {
-      expect(provider.getSupportedProviders()).to.eql(['dailymotion', 'ina', 'youtube']);
+      expect(provider.getSupportedProviders()).to.eql(['dailymotion', 'ina', 'youtube', 'digiteka']);
     });
   });
 

@@ -61,6 +61,8 @@ videoProvider.extendProvider('digiteka', {
 });
 ```
 
+Digiteka provider has a `search` method to require in utlimedia catalog.
+
 ## providerVideo API
 
 ### getProviderFromUrl

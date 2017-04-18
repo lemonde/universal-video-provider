@@ -3,9 +3,9 @@ const moment = require('moment');
 const dailymotion = require('./providers/dailymotion');
 const ina = require('./providers/ina');
 const youtube = require('./providers/youtube');
-// const digiteka = require('./providers/digiteka');
+const digiteka = require('./providers/digiteka');
 
-const providers = [dailymotion, ina, youtube];
+const providers = [dailymotion, ina, youtube, digiteka];
 
 function extractVideoId(provider, url) {
   return provider.videoIdExtractRegExps.reduce(
