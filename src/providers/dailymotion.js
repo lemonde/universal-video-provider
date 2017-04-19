@@ -1,6 +1,10 @@
 const _ = require('lodash');
 const fetch = require('../fetch');
 
+const fetchVideo = _.memoize(
+  url => fetch(url, { headers: provider.headers }).then(res => res.json())
+);
+
 const provider = {
   name: 'dailymotion',
   label: 'Dailymotion',
@@ -23,24 +27,18 @@ const provider = {
   ),
 
   getTitle: videoId => (
-    fetch(`https://api.dailymotion.com/video/${videoId}?fields=title`, {
-      method: 'GET', headers: provider.headers
-    })
-    .then(result => _.get(result, 'data.title'))
+    fetchVideo(`https://api.dailymotion.com/video/${videoId}?fields=title`)
+    .then(result => _.get(result, 'title'))
   ),
 
   getDescription: videoId => (
-    fetch(`https://api.dailymotion.com/video/${videoId}?fields=description`, {
-      method: 'GET', headers: provider.headers
-    })
-    .then(result => _.get(result, 'data.description'))
+    fetchVideo(`https://api.dailymotion.com/video/${videoId}?fields=description`)
+    .then(result => _.get(result, 'description'))
   ),
 
   getDuration: videoId => (
-    fetch(`https://api.dailymotion.com/video/${videoId}?fields=duration`, {
-      method: 'GET', headers: provider.headers
-    })
-    .then(result => _.get(result, 'data.duration'))
+    fetchVideo(`https://api.dailymotion.com/video/${videoId}?fields=duration`)
+    .then(result => _.get(result, 'duration'))
   ),
 
   getPlayerUrl: videoId => (

@@ -8,9 +8,9 @@ const fetchUrl = (videoId, part) => (
   `https://www.googleapis.com/youtube/v3/videos?part=${part}&id=${videoId}&key=${provider.apiKey}`
 );
 
-const fetchVideo = (videoId, part) => fetch(
-  fetchUrl(videoId, part),
-  { headers: provider.headers, cache: true }
+const fetchVideo = _.memoize(
+  (videoId, part) => fetch(fetchUrl(videoId, part), { headers: provider.headers })
+    .then(res => res.json())
 );
 
 /**
@@ -53,17 +53,17 @@ const provider = {
 
   getTitle: videoId => (
     fetchVideo(videoId, 'snippet')
-    .then(result => _.get(result, 'data.items.0.snippet.title'))
+    .then(result => _.get(result, 'items.0.snippet.title'))
   ),
 
   getDescription: videoId => (
     fetchVideo(videoId, 'snippet')
-    .then(result => _.get(result, 'data.items.0.snippet.description'))
+    .then(result => _.get(result, 'items.0.snippet.description'))
   ),
 
   getDuration: videoId => (
     fetchVideo(videoId, 'contentDetails')
-    .then(result => convertDurationToSc(_.get(result, 'data.items.0.contentDetails.duration')))
+    .then(result => convertDurationToSc(_.get(result, 'items.0.contentDetails.duration')))
   ),
 
   getPlayerUrl: videoId => (

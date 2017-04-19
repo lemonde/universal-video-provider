@@ -12,6 +12,10 @@ const walker = (xmlObj, path) => {
   return walker(_.find(xmlObj.childs, { name: path.shift() }), path);
 };
 
+const fetchVideo = _.memoize(
+  url => fetch(url, { headers: provider.headers }).then(res => res.text())
+);
+
 const provider = {
   name: 'ina',
   label: 'INA',
@@ -26,18 +30,18 @@ const provider = {
   ),
 
   getTitle: videoId => (
-    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: provider.headers })
-    .then(result => find(xml(result.data), 'channel.title').childs[0])
+    fetchVideo(`//player.ina.fr/notices/${videoId}.mrss`)
+    .then(result => find(xml(result), 'channel.title').childs[0])
   ),
 
   getDescription: videoId => (
-    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: provider.headers })
-    .then(result => find(xml(result.data), 'channel.description').childs[0])
+    fetchVideo(`//player.ina.fr/notices/${videoId}.mrss`)
+    .then(result => find(xml(result), 'channel.description').childs[0])
   ),
 
   getDuration: videoId => (
-    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: provider.headers })
-    .then(result => find(xml(result.data), 'channel.item.media:content').attrib.duration)
+    fetchVideo(`//player.ina.fr/notices/${videoId}.mrss`)
+    .then(result => find(xml(result), 'channel.item.media:content').attrib.duration)
   ),
 
   getPlayerUrl: videoId => (

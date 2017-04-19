@@ -18,7 +18,9 @@ const searchUrl = (query, perPage, page) => (
   `q/${query}/mode/last`
 );
 
-const fetchVideo = videoId => fetch(fetchUrl(videoId), { headers: provider.headers, cache: true });
+const fetchVideo = _.memoize(
+  videoId => fetch(fetchUrl(videoId), { headers: provider.headers }).then(res => res.json())
+);
 
 /**
  * Extractors
@@ -44,27 +46,27 @@ const provider = {
 
   getThumbnailUrl: videoId => (
     fetchVideo(videoId)
-    .then(res => extractThumbnailUrl(_.get(res, 'data.results.image_high')))
+    .then(res => extractThumbnailUrl(_.get(res, 'results.image_high')))
   ),
 
   getTitle: videoId => (
     fetchVideo(videoId)
-    .then(res => _.get(res, 'data.results.title'))
+    .then(res => _.get(res, 'results.title'))
   ),
 
   getDescription: videoId => (
     fetchVideo(videoId)
-    .then(res => _.get(res, 'data.results.description'))
+    .then(res => _.get(res, 'results.description'))
   ),
 
   getDuration: videoId => (
     fetchVideo(videoId)
-    .then(res => _.get(res, 'data.results.lengthvideo'))
+    .then(res => _.get(res, 'results.lengthvideo'))
   ),
 
   getPlayerUrl: videoId => (
     fetchVideo(videoId)
-    .then(res => extractPlayerUrl(_.get(res, 'data.results.iframe')))
+    .then(res => extractPlayerUrl(_.get(res, 'results.iframe')))
   ),
 
   // search methods and constants
@@ -76,7 +78,8 @@ const provider = {
       searchUrl(query, provider.itemsPerPage, 1 + Math.ceil(offset / provider.itemsPerPage)),
       { timeout: 10000, headers: provider.headers }
     )
-    .then(res => _.get(res, 'data.results', []).map(
+    .then(res => res.json())
+    .then(res => _.get(res, 'results', []).map(
       ({
         video_id, title, description, lengthvideo, image_high, iframe
       }) => formatter('digiteka', video_id, {

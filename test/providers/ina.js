@@ -11,7 +11,7 @@ describe('Ina provider', () => {
     fs.readFile(path.join(__dirname, '../fixtures/ina.xml'), (err, data) => {
       if (err) return done(err);
       ina = proxyquire('../../src/providers/ina', {
-        '../fetch': sinon.stub().returns(Promise.resolve({ data }))
+        '../fetch': sinon.stub().returns(Promise.resolve({ text: () => data }))
       });
       return done();
     });

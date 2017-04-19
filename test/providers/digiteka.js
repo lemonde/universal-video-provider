@@ -11,7 +11,7 @@ describe('Digiteka provider', () => {
 
     before(() => {
       digiteka = proxyquire('../../src/providers/digiteka', {
-        '../fetch': sinon.stub().returns(Promise.resolve({ data }))
+        '../fetch': sinon.stub().returns(Promise.resolve({ json: () => data }))
       });
     });
 
@@ -82,7 +82,7 @@ describe('Digiteka provider', () => {
 
     before(() => {
       digiteka = proxyquire('../../src/providers/digiteka', {
-        '../fetch': sinon.stub().returns(Promise.resolve({ data }))
+        '../fetch': sinon.stub().returns(Promise.resolve({ json: () => data }))
       });
     });
 
@@ -106,6 +106,29 @@ describe('Digiteka provider', () => {
           title: 'Syrie : carnage après un attentat-suicide contre un convoi de civils évacués',
           videoId: '8f3q8q'
         });
+        done();
+      })
+      .catch(done);
+    });
+  });
+
+  describe('#memoize', () => {
+    const data = fixtures.fetch;
+    const stubFetch = sinon.stub().returns(Promise.resolve({ json: () => data }));
+
+    before(() => {
+      digiteka = proxyquire('../../src/providers/digiteka', {
+        '../fetch': stubFetch
+      });
+    });
+
+    it('should reduce fetch calls', (done) => {
+      Promise.all([
+        digiteka.getTitle('fakeId'),
+        digiteka.getDescription('fakeId')
+      ])
+      .then(() => {
+        expect(stubFetch.calledOnce).to.be.true;
         done();
       })
       .catch(done);
