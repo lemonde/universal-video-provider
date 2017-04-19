@@ -19,7 +19,7 @@ const formatVideo = (
   duration: formatDuration(duration),
   metadata: `<iframe src=${playerUrl} frameborder="0"></iframe>`,
   provider: providerName,
-  videoId,
+  providerVideoId: videoId,
 });
 
 module.exports.duration = formatDuration;

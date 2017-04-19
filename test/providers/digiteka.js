@@ -104,7 +104,7 @@ describe('Digiteka provider', () => {
           provider: 'digiteka',
           thumbnailUrl: '//medialb.ultimedia.com/multi/35fzl/8f3q8q-L.jpg',
           title: 'Syrie : carnage après un attentat-suicide contre un convoi de civils évacués',
-          videoId: '8f3q8q'
+          providerVideoId: '8f3q8q'
         });
         done();
       })

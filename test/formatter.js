@@ -29,11 +29,11 @@ describe('Formatter', () => {
         duration: '01:08',
         thumbnailUrl: 'mythumbnailUrl',
         playerUrl: 'myplayerUrl',
-        metadata: '<iframe src=myplayerUrl frameborder=\"0\"></iframe>',
+        metadata: '<iframe src=myplayerUrl frameborder="0"></iframe>',
         provider: 'digiteka',
-        videoId: '123aze'
-      })
-    })
+        providerVideoId: '123aze'
+      });
+    });
   });
 });
 
