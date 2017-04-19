@@ -156,6 +156,18 @@ videoProvider.extendProvider('vimeo', {
 });
 ```
 
+### extendProvider
+
+Extend all providers with new constants or methods.
+
+```
+Params: new fields (Object)
+```
+
+```js
+videoProvider.extendProviders({ header: { 'Cache-Control': 'no-cache' } });
+```
+
 ## provider API
 
 ### getThumbnailUrl
