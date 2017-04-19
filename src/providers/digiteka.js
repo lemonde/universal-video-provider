@@ -12,8 +12,8 @@ const fetchUrl = videoId => (
 );
 
 const searchUrl = (query, perPage, page) => (
-  '//www.ultimedia.com/api/search/getvideoinfos/datatype/json/' +
-  `zone/${provider.zoneId}/perPage/${perPage}/page/${page}/` +
+  '//www.ultimedia.com/api/search/search/datatype/json/' +
+  `zone/${provider.zoneId}/perpage/${perPage}/page/${page}/` +
   `mdtk/${provider.mdtk}/owner_id/${provider.mainCatalog}/` +
   `q/${query}/mode/last`
 );
@@ -24,9 +24,9 @@ const fetchVideo = videoId => fetch(fetchUrl(videoId), { headers: provider.heade
  * Extractors
  */
 
-const extractThumbnailUrl = imageUrl => /(?:https?:)(.*)/.exec(imageUrl)[1];
+const extractThumbnailUrl = imageUrl => _.nth(/(?:https?:)(.*)/.exec(imageUrl), 1);
 
-const extractPlayerUrl = iframeTag => /src="(?:https?:)([^"]*)/.exec(iframeTag)[1];
+const extractPlayerUrl = iframeTag => _.nth(/src="(?:https?:)([^"]*)/.exec(iframeTag), 1);
 
 const provider = {
   name: 'digiteka',
@@ -73,8 +73,8 @@ const provider = {
   searchUrl,
   search: (query, offset = 0) => (
     fetch(
-      searchUrl(query, this.itemsPerPage, 1 + Math.ceil(offset / this.itemsPerPage)),
-      { timeout: 10000, headers: this.headers }
+      searchUrl(query, provider.itemsPerPage, 1 + Math.ceil(offset / provider.itemsPerPage)),
+      { timeout: 10000, headers: provider.headers }
     )
     .then(res => _.get(res, 'data.results', []).map(
       ({

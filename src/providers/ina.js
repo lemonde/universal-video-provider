@@ -12,7 +12,7 @@ const walker = (xmlObj, path) => {
   return walker(_.find(xmlObj.childs, { name: path.shift() }), path);
 };
 
-module.exports = {
+const provider = {
   name: 'ina',
   label: 'INA',
   headers: {},
@@ -26,17 +26,17 @@ module.exports = {
   ),
 
   getTitle: videoId => (
-    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: this.headers })
+    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: provider.headers })
     .then(result => find(xml(result.data), 'channel.title').childs[0])
   ),
 
   getDescription: videoId => (
-    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: this.headers })
+    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: provider.headers })
     .then(result => find(xml(result.data), 'channel.description').childs[0])
   ),
 
   getDuration: videoId => (
-    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: this.headers })
+    fetch(`//player.ina.fr/notices/${videoId}.mrss`, { method: 'GET', headers: provider.headers })
     .then(result => find(xml(result.data), 'channel.item.media:content').attrib.duration)
   ),
 
@@ -44,3 +44,5 @@ module.exports = {
     new Promise(resolve => resolve(`//player.ina.fr/player/ticket/${videoId}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/0/148db8`))
   )
 };
+
+module.exports = provider;

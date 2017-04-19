@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const fetch = require('../fetch');
 
-module.exports = {
+const provider = {
   name: 'dailymotion',
   label: 'Dailymotion',
   headers: {},
@@ -24,21 +24,21 @@ module.exports = {
 
   getTitle: videoId => (
     fetch(`https://api.dailymotion.com/video/${videoId}?fields=title`, {
-      method: 'GET', headers: this.headers
+      method: 'GET', headers: provider.headers
     })
     .then(result => _.get(result, 'data.title'))
   ),
 
   getDescription: videoId => (
     fetch(`https://api.dailymotion.com/video/${videoId}?fields=description`, {
-      method: 'GET', headers: this.headers
+      method: 'GET', headers: provider.headers
     })
     .then(result => _.get(result, 'data.description'))
   ),
 
   getDuration: videoId => (
     fetch(`https://api.dailymotion.com/video/${videoId}?fields=duration`, {
-      method: 'GET', headers: this.headers
+      method: 'GET', headers: provider.headers
     })
     .then(result => _.get(result, 'data.duration'))
   ),
@@ -47,3 +47,5 @@ module.exports = {
     new Promise(resolve => resolve(`//www.dailymotion.com/embed/video/${videoId}`))
   )
 };
+
+module.exports = provider;
