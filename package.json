@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "es6-promise": "^4.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "moment": "^2.18.1",
-    "node-xml-lite": "^0.0.7",
-    "universal-fetch": "^1.0.0"
+    "node-xml-lite": "^0.0.7"
   }
 }

@@ -5,7 +5,7 @@ try {
   if (fetch) true;
 } catch (err) {
   require('es6-promise').polyfill();
-  require('universal-fetch');
+  require('isomorphic-fetch');
 }
 
 module.exports = fetch;
