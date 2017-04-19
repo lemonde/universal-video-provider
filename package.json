@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/JBustin/universal-video-provider/issues"
   },
+  "format": "es6",
   "homepage": "https://github.com/JBustin/universal-video-provider#readme",
   "devDependencies": {
     "chai": "^3.5.0",
