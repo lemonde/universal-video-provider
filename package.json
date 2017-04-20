@@ -1,6 +1,6 @@
 {
   "name": "universal-video-provider",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "es6 client and node universal video provider",
   "main": "index.js",
   "scripts": {
@@ -40,6 +40,7 @@
     "package.json",
     ".npmignore",
     "README.md",
-    "lib"
+    "lib",
+    "index.js"
   ]
 }

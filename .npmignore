@@ -1,7 +1,0 @@
-node_modules
-src
-test
-.eslintignore
-.eslintrc.js
-.gitignore
-.travis.yml
