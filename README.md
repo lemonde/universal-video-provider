@@ -36,7 +36,7 @@ then(video => console.log(video))
 
 ## Requirements
 
-ES6
+Run with npm and jspm. Not tested with others package managers.
 
 ## Support video platforms
 
@@ -246,5 +246,7 @@ provider.getPlayerUrl(videoId)
 ```
 
 ## How to contribute ?
+
+The sources should be transpiled (`npm run build`) before create a new release.
 
 You can add issue, and create pull request. https://github.com/lemonde/universal-video-provider/blob/master/.github/CONTRIBUTING.md
