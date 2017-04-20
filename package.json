@@ -1,6 +1,6 @@
 {
   "name": "universal-video-provider",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "es6 client and node universal video provider",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,6 @@
   "bugs": {
     "url": "https://github.com/JBustin/universal-video-provider/issues"
   },
-  "format": "es6",
   "homepage": "https://github.com/JBustin/universal-video-provider#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
