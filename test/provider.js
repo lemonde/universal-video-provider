@@ -141,7 +141,7 @@ describe('Provider', () => {
 
   describe('#get supported providers', () => {
     it('should return a list', () => {
-      expect(provider.getSupportedProviders()).to.eql(['dailymotion', 'ina', 'youtube', 'digiteka']);
+      expect(provider.getSupportedProviders()).to.eql(['dailymotion', 'ina', 'youtube', 'digiteka', 'facebook']);
     });
   });
 
