@@ -4,8 +4,9 @@ const dailymotion = require('./providers/dailymotion');
 const ina = require('./providers/ina');
 const youtube = require('./providers/youtube');
 const digiteka = require('./providers/digiteka');
+const facebook = require('./providers/facebook');
 
-const providers = [dailymotion, ina, youtube, digiteka];
+const providers = [dailymotion, ina, youtube, digiteka, facebook];
 
 function extractVideoId(provider, url) {
   return provider.videoIdExtractRegExps.reduce(
