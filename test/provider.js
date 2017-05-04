@@ -72,7 +72,7 @@ describe('Provider', () => {
           duration: '00:55',
           thumbnailUrl: 'dailymotion:thumbnailUrl',
           playerUrl: 'dailymotion:playerUrl',
-          metadata: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>',
+          metadata: { embedCode: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>' },
           provider: 'dailymotion',
           providerVideoId: '10'
         });
@@ -93,7 +93,7 @@ describe('Provider', () => {
           duration: '00:55',
           thumbnailUrl: 'dailymotion:thumbnailUrl',
           playerUrl: 'dailymotion:playerUrl',
-          metadata: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>',
+          metadata: { embedCode: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>' },
           provider: 'dailymotion',
           providerVideoId: '10'
         });
@@ -112,7 +112,7 @@ describe('Provider', () => {
           duration: '00:55',
           thumbnailUrl: 'youtube:thumbnailUrl',
           playerUrl: 'youtube:playerUrl',
-          metadata: '<iframe src=youtube:playerUrl frameborder="0"></iframe>',
+          metadata: { embedCode: '<iframe src=youtube:playerUrl frameborder="0"></iframe>' },
           provider: 'youtube',
           providerVideoId: '10'
         });

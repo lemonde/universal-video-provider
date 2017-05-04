@@ -99,7 +99,7 @@ describe('Digiteka provider', () => {
           'surveillance de combattants anti-Assad, d’être évacuées en zone ' +
           'loyaliste, dans le cadre d’un accord d’échange.',
           duration: '00:49',
-          metadata: '<iframe src=//www.ultimedia.com/deliver/generic/iframe/mdtk/01637594/zone/34/src/8f3q8q frameborder="0"></iframe>',
+          metadata: { embedCode: '<iframe src=//www.ultimedia.com/deliver/generic/iframe/mdtk/01637594/zone/34/src/8f3q8q frameborder="0"></iframe>' },
           playerUrl: '//www.ultimedia.com/deliver/generic/iframe/mdtk/01637594/zone/34/src/8f3q8q',
           provider: 'digiteka',
           thumbnailUrl: '//medialb.ultimedia.com/multi/35fzl/8f3q8q-L.jpg',
