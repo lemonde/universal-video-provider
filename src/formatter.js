@@ -17,7 +17,7 @@ const formatVideo = (
   thumbnailUrl,
   playerUrl,
   duration: formatDuration(duration),
-  metadata: `<iframe src=${playerUrl} frameborder="0"></iframe>`,
+  metadata: { embedCode: `<iframe src=${playerUrl} frameborder="0"></iframe>` },
   provider: providerName,
   providerVideoId: videoId,
 });

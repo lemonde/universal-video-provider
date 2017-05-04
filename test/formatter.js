@@ -29,7 +29,7 @@ describe('Formatter', () => {
         duration: '01:08',
         thumbnailUrl: 'mythumbnailUrl',
         playerUrl: 'myplayerUrl',
-        metadata: '<iframe src=myplayerUrl frameborder="0"></iframe>',
+        metadata: { embedCode: '<iframe src=myplayerUrl frameborder="0"></iframe>' },
         provider: 'digiteka',
         providerVideoId: '123aze'
       });
