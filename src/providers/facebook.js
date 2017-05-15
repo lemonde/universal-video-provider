@@ -1,5 +1,7 @@
 const _ = require('lodash');
+
 const fetch = require('../fetch');
+
 const BASE_GRAPH_API_URL = 'https://graph.facebook.com/v2.9/';
 
 /**
@@ -7,8 +9,7 @@ const BASE_GRAPH_API_URL = 'https://graph.facebook.com/v2.9/';
  */
 
 const fetchVideo = _.memoize(
-  (url) => fetch(url, { headers: provider.headers })
-    .then(res => res.json())
+  url => fetch(url, { headers: provider.headers }).then(res => res.json())
 );
 
 const provider = {
@@ -47,6 +48,16 @@ const provider = {
       .then(result => `https://www.facebook.com/plugins/video.php?href=https://www.facebook.com${result.permalink_url}`)
   ),
 
+  getEmbedCode: videoId => (
+    provider.getPlayerUrl(videoId)
+    .then(playerUrl => _.compact([
+      `<iframe src="${playerUrl}"`,
+      _.get(provider, 'embed.width') ? `width="${provider.embed.width}"` : null,
+      _.get(provider, 'embed.height') ? `height="${provider.embed.height}"` : null,
+      'style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"',
+      'allowFullScreen="true"></iframe>'
+    ]).join(' '))
+  )
 };
 
 module.exports = provider;

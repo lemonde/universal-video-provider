@@ -21,7 +21,8 @@ describe('Formatter', () => {
         description: 'mydescription',
         duration: '68',
         thumbnailUrl: 'mythumbnailUrl',
-        playerUrl: 'myplayerUrl'
+        playerUrl: 'myplayerUrl',
+        embedCode: 'myembedCode'
       }))
       .to.eql({
         title: 'mytitle',
@@ -29,7 +30,7 @@ describe('Formatter', () => {
         duration: '01:08',
         thumbnailUrl: 'mythumbnailUrl',
         playerUrl: 'myplayerUrl',
-        metadata: { embedCode: '<iframe src=myplayerUrl frameborder="0"></iframe>' },
+        metadata: { embedCode: 'myembedCode' },
         provider: 'digiteka',
         providerVideoId: '123aze'
       });

@@ -2,6 +2,14 @@ const _ = require('lodash');
 const xml = require('node-xml-lite').parseString;
 const fetch = require('../fetch');
 
+/**
+ * Ina api endpoints
+ */
+
+const getUrl = videoId => (
+  `//player.ina.fr/player/ticket/${videoId}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/0/148db8`
+);
+
 const find = (xmlObj, pathStr) => {
   const path = pathStr.split('.');
   return walker(xmlObj, path);
@@ -45,8 +53,18 @@ const provider = {
   ),
 
   getPlayerUrl: videoId => (
-    new Promise(resolve => resolve(`//player.ina.fr/player/ticket/${videoId}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/0/148db8`))
-  )
+    new Promise(resolve => resolve(getUrl(videoId)))
+  ),
+
+  getEmbedCode: videoId => (
+    new Promise(resolve => resolve(_.compact([
+      '<iframe',
+      _.get(provider, 'embed.width') ? `width="${provider.embed.width}"` : null,
+      _.get(provider, 'embed.height') ? `height="${provider.embed.height}"` : null,
+      'frameborder="0" marginheight ="0" marginwidth="0" scrolling ="no"',
+      `src="${getUrl(videoId)}"></iframe>`
+    ]).join(' ')))
+  ),
 };
 
 module.exports = provider;

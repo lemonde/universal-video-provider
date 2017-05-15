@@ -1,9 +1,15 @@
 const _ = require('lodash');
 const fetch = require('../fetch');
 
+/**
+ * Dailymotion api endpoints
+ */
+
 const fetchVideo = _.memoize(
   url => fetch(url, { headers: provider.headers }).then(res => res.json())
 );
+
+const getUrl = videoId => `//www.dailymotion.com/embed/video/${videoId}`;
 
 const provider = {
   name: 'dailymotion',
@@ -42,7 +48,17 @@ const provider = {
   ),
 
   getPlayerUrl: videoId => (
-    new Promise(resolve => resolve(`//www.dailymotion.com/embed/video/${videoId}`))
+    new Promise(resolve => resolve(getUrl(videoId)))
+  ),
+
+  getEmbedCode: videoId => (
+    new Promise(resolve => resolve(_.compact([
+      `<iframe src="${getUrl(videoId)}"`,
+      'frameborder="0"',
+      _.get(provider, 'embed.width') ? `width="${provider.embed.width}"` : null,
+      _.get(provider, 'embed.height') ? `height="${provider.embed.height}"` : null,
+      '></iframe>'
+    ]).join(' ')))
   )
 };
 
