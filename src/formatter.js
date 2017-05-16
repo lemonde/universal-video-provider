@@ -10,14 +10,14 @@ const formatDuration = (duration, pattern = 'HH:mm:ss') => (
 const formatVideo = (
   providerName,
   videoId,
-  { title, description, duration, thumbnailUrl, playerUrl }
+  { title, description, duration, thumbnailUrl, playerUrl, embedCode }
 ) => ({
   title,
   description,
   thumbnailUrl,
   playerUrl,
   duration: formatDuration(duration),
-  metadata: { embedCode: `<iframe src=${playerUrl} frameborder="0"></iframe>` },
+  metadata: { embedCode },
   provider: providerName,
   providerVideoId: videoId,
 });

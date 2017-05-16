@@ -4,6 +4,9 @@ const fetch = require('../fetch');
 /**
  * Url api v3
  */
+
+const getUrl = videoId => `//www.youtube.com/embed/${videoId}`;
+
 const fetchUrl = (videoId, part) => (
   `https://www.googleapis.com/youtube/v3/videos?part=${part}&id=${videoId}&key=${provider.apiKey}`
 );
@@ -67,8 +70,18 @@ const provider = {
   ),
 
   getPlayerUrl: videoId => (
-    new Promise(resolve => resolve(`//www.youtube.com/embed/${videoId}`))
-  )
+    new Promise(resolve => resolve(getUrl(videoId)))
+  ),
+
+  getEmbedCode: videoId => (
+    new Promise(resolve => resolve(_.compact([
+      `<iframe src="${getUrl(videoId)}"`,
+      'frameborder="0"',
+      _.get(provider, 'embed.width') ? `width="${provider.embed.width}"` : null,
+      _.get(provider, 'embed.height') ? `height="${provider.embed.height}"` : null,
+      '></iframe>'
+    ]).join(' ')))
+  ),
 };
 
 module.exports = provider;

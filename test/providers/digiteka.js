@@ -75,6 +75,20 @@ describe('Digiteka provider', () => {
       })
       .catch(done);
     });
+
+    it('should get embed code', (done) => {
+      digiteka.getEmbedCode('8f3q8q')
+      .then((embedCode) => {
+        expect(embedCode).to.equal([
+          '<iframe frameborder="0" scrolling="no" marginwidth="0" marginheight="0" hspace="0"',
+          'vspace="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"',
+          'src="//www.ultimedia.com/deliver/generic/iframe/mdtk/null /src/8f3q8q/zone/1/showtitle/1"',
+          '></iframe>'
+        ].join(' '));
+        done();
+      })
+      .catch(done);
+    });
   });
 
   describe('#search', () => {
@@ -99,12 +113,19 @@ describe('Digiteka provider', () => {
           'surveillance de combattants anti-Assad, d’être évacuées en zone ' +
           'loyaliste, dans le cadre d’un accord d’échange.',
           duration: '00:49',
-          metadata: { embedCode: '<iframe src=//www.ultimedia.com/deliver/generic/iframe/mdtk/01637594/zone/34/src/8f3q8q frameborder="0"></iframe>' },
+          metadata: {
+            embedCode: [
+              '<iframe frameborder="0" scrolling="no" marginwidth="0" marginheight="0" hspace="0"',
+              'vspace="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"',
+              'src="//www.ultimedia.com/deliver/generic/iframe/mdtk/null /src/8f3q8q/zone/1/showtitle/1"',
+              '></iframe>'
+            ].join(' ')
+          },
           playerUrl: '//www.ultimedia.com/deliver/generic/iframe/mdtk/01637594/zone/34/src/8f3q8q',
           provider: 'digiteka',
           thumbnailUrl: '//medialb.ultimedia.com/multi/35fzl/8f3q8q-L.jpg',
           title: 'Syrie : carnage après un attentat-suicide contre un convoi de civils évacués',
-          providerVideoId: '8f3q8q'
+          providerVideoId: '8f3q8q',
         });
         done();
       })

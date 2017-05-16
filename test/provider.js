@@ -14,7 +14,8 @@ describe('Provider', () => {
     getTitle: () => Promise.resolve(`${name}:title`),
     getDescription: () => Promise.resolve(`${name}:description`),
     getDuration: () => Promise.resolve(55),
-    getPlayerUrl: () => Promise.resolve(`${name}:playerUrl`)
+    getPlayerUrl: () => Promise.resolve(`${name}:playerUrl`),
+    getEmbedCode: () => Promise.resolve(`${name}:embedCode`)
   });
 
   const provider = proxyquire('../src/provider', {
@@ -72,7 +73,7 @@ describe('Provider', () => {
           duration: '00:55',
           thumbnailUrl: 'dailymotion:thumbnailUrl',
           playerUrl: 'dailymotion:playerUrl',
-          metadata: { embedCode: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>' },
+          metadata: { embedCode: 'dailymotion:embedCode' },
           provider: 'dailymotion',
           providerVideoId: '10'
         });
@@ -93,7 +94,7 @@ describe('Provider', () => {
           duration: '00:55',
           thumbnailUrl: 'dailymotion:thumbnailUrl',
           playerUrl: 'dailymotion:playerUrl',
-          metadata: { embedCode: '<iframe src=dailymotion:playerUrl frameborder="0"></iframe>' },
+          metadata: { embedCode: 'dailymotion:embedCode' },
           provider: 'dailymotion',
           providerVideoId: '10'
         });
@@ -112,7 +113,7 @@ describe('Provider', () => {
           duration: '00:55',
           thumbnailUrl: 'youtube:thumbnailUrl',
           playerUrl: 'youtube:playerUrl',
-          metadata: { embedCode: '<iframe src=youtube:playerUrl frameborder="0"></iframe>' },
+          metadata: { embedCode: 'youtube:embedCode' },
           provider: 'youtube',
           providerVideoId: '10'
         });

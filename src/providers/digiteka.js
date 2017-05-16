@@ -30,6 +30,22 @@ const extractThumbnailUrl = imageUrl => _.nth(/(?:https?:)(.*)/.exec(imageUrl), 
 
 const extractPlayerUrl = iframeTag => _.nth(/src="(?:https?:)([^"]*)/.exec(iframeTag), 1);
 
+/**
+ * Formatters
+ */
+
+const formatEmbedCode = videoId => (
+  _.compact([
+    '<iframe frameborder="0" scrolling="no" marginwidth="0" marginheight="0" hspace="0" vspace="0"',
+    'webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"',
+    `src="//www.ultimedia.com/deliver/generic/iframe/mdtk/${provider.mdtk}`,
+    `/src/${videoId}/zone/1/showtitle/1"`,
+    _.get(provider, 'embed.width') ? `width="${provider.embed.width}"` : null,
+    _.get(provider, 'embed.height') ? `height="${provider.embed.height}"` : null,
+    '></iframe>'
+  ]).join(' ')
+);
+
 const provider = {
   name: 'digiteka',
   label: 'Digiteka',
@@ -69,6 +85,10 @@ const provider = {
     .then(res => extractPlayerUrl(_.get(res, 'results.iframe')))
   ),
 
+  getEmbedCode: videoId => (
+    new Promise(resolve => resolve(formatEmbedCode(videoId)))
+  ),
+
   // search methods and constants
   itemsPerPage: 10,
   extractPlayerUrl,
@@ -87,7 +107,8 @@ const provider = {
         description,
         duration: lengthvideo,
         thumbnailUrl: extractThumbnailUrl(image_high),
-        playerUrl: extractPlayerUrl(iframe)
+        playerUrl: extractPlayerUrl(iframe),
+        embedCode: formatEmbedCode(video_id)
       })
     ))
   )
