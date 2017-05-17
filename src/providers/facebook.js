@@ -15,6 +15,7 @@ const fetchVideo = _.memoize(
 const provider = {
   name: 'facebook',
   label: 'Facebook',
+  embed: { liquid: true },
   headers: {},
   pageAccessToken: null,
   videoIdExtractRegExps: [
@@ -48,15 +49,45 @@ const provider = {
       .then(result => `https://www.facebook.com/plugins/video.php?href=https://www.facebook.com${result.permalink_url}`)
   ),
 
+  getEmbedDimensions: videoId => (
+    fetchVideo(`${BASE_GRAPH_API_URL}${videoId}?access_token=${provider.pageAccessToken}&fields=embed_html`)
+      .then((result) => {
+        const [, width, height] = result.embed_html.match(/width="(\d+)" height="(\d+)"/);
+        return { width, height };
+      })
+  ),
+
   getEmbedCode: videoId => (
-    provider.getPlayerUrl(videoId)
-    .then(playerUrl => _.compact([
-      `<iframe src="${playerUrl}"`,
-      _.get(provider, 'embed.width') ? `width="${provider.embed.width}"` : null,
-      _.get(provider, 'embed.height') ? `height="${provider.embed.height}"` : null,
-      'style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"',
-      'allowFullScreen="true"></iframe>'
-    ]).join(' '))
+    Promise.all([
+      provider.getPlayerUrl(videoId),
+      provider.getEmbedDimensions(videoId)
+    ])
+    .then(([playerUrl, dimensions]) => {
+      const width = _.get(provider, 'embed.width', dimensions.width);
+      const height = _.get(provider, 'embed.height', dimensions.height);
+      const ratio = (height / width) * 100;
+
+      if (_.get(provider, 'embed.liquid')) {
+        return [
+          `<div class="uvp-liquid-iframe" style="position:relative;height:0;overflow:hidden;padding-bottom:${ratio}%">`,
+          `<iframe src="${playerUrl}"`,
+          'style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;"',
+          'scrolling="no" frameborder="0" allowTransparency="true"',
+          'allowFullScreen="true">',
+          '</iframe>',
+          '</div>'
+        ].join(' ');
+      }
+
+      return [
+        `<iframe src="${playerUrl}"`,
+        'style="border:none;overflow:hidden;"',
+        `width="${width}" height="${height}"`,
+        'scrolling="no" frameborder="0" allowTransparency="true"',
+        'allowFullScreen="true">',
+        '</iframe>'
+      ].join(' ');
+    })
   )
 };
 

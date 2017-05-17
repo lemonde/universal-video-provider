@@ -61,7 +61,7 @@ const provider = {
       '<iframe',
       _.get(provider, 'embed.width') ? `width="${provider.embed.width}"` : null,
       _.get(provider, 'embed.height') ? `height="${provider.embed.height}"` : null,
-      'frameborder="0" marginheight ="0" marginwidth="0" scrolling ="no"',
+      'frameborder="0" marginheight ="0" marginwidth="0" scrolling="no"',
       `src="${getUrl(videoId)}"></iframe>`
     ]).join(' ')))
   ),
