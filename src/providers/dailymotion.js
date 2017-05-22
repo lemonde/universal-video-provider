@@ -59,7 +59,7 @@ const provider = {
       _.get(provider, 'embed.height') ? `height="${provider.embed.height}"` : null,
       '></iframe>'
     ]).join(' ')))
-  )
+  ),
 };
 
 module.exports = provider;
