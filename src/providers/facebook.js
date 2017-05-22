@@ -63,8 +63,8 @@ const provider = {
       provider.getEmbedDimensions(videoId)
     ])
     .then(([playerUrl, dimensions]) => {
-      const width = _.get(provider, 'embed.width', dimensions.width);
-      const height = _.get(provider, 'embed.height', dimensions.height);
+      const width = parseInt(_.get(provider, 'embed.width', dimensions.width, 400), 10);
+      const height = parseInt(_.get(provider, 'embed.height', dimensions.height, 400), 10);
       const ratio = (height / width) * 100;
 
       if (_.get(provider, 'embed.liquid')) {
