@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/lemonde/universal-video-provider.svg?branch=master)](https://travis-ci.org/lemonde/universal-video-provider)
 
+## Install
+
+You can install it with yarn: `yarn --pure-lockfile`
+
 ## Description
 
 It's a video provider, which expose some basics data extracted from famous video platforms.
@@ -11,6 +15,10 @@ This lib could be used natively on server side (node) and on client side, with a
 Basic usage :
 
 `npm install --save universal-video-provider`
+
+or
+
+`yarn add universal-video-provider`
 
 ```js
 const videoProvider = require('universal-video-provider');
@@ -248,9 +256,9 @@ provider.getPlayerUrl(videoId)
 ## How to contribute ?
 
 Since `js-release` is included in the project, you can make a release with it:
-See the changelog: `npm run release -- changelog`
-make the release: `npm run release -- add <patch|minor|major>`
+See the changelog: `yarn release -- changelog`
+make the release: `yarn release -- add <patch|minor|major>`
 
-This will transpile the sources (`npm run build`) before creating a new release.
+This will transpile the sources (`yarn build`) before creating a new release.
 
 You can add issue, and create pull request. https://github.com/lemonde/universal-video-provider/blob/master/.github/CONTRIBUTING.md
