@@ -247,6 +247,10 @@ provider.getPlayerUrl(videoId)
 
 ## How to contribute ?
 
-The sources should be transpiled (`npm run build`) before create a new release.
+Since `js-release` is included in the project, you can make a release with it:
+See the changelog: `npm run release -- changelog`
+make the release: `npm run release -- add <patch|minor|major>`
+
+This will transpile the sources (`npm run build`) before creating a new release.
 
 You can add issue, and create pull request. https://github.com/lemonde/universal-video-provider/blob/master/.github/CONTRIBUTING.md

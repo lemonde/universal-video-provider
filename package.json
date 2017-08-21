@@ -6,7 +6,8 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --recursive",
     "babel": "babel src -d lib",
-    "build": "npm run babel"
+    "build": "npm run babel",
+    "release": "node ./node_modules/js-release/cli"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
     "eslint-plugin-import": "^2.2.0",
+    "js-release": "^0.5.2",
     "mocha": "^3.2.0",
     "proxyquire": "^1.7.11",
     "sinon": "^2.1.0"
