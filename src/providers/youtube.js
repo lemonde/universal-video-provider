@@ -11,10 +11,8 @@ const fetchUrl = (videoId, part) => (
   `https://www.googleapis.com/youtube/v3/videos?part=${part}&id=${videoId}&key=${provider.apiKey}`
 );
 
-const fetchVideo = _.memoize(
-  (videoId, part) => fetch(fetchUrl(videoId, part), { headers: provider.headers })
-    .then(res => res.json())
-);
+const fetchVideo = (videoId, part) => fetch(fetchUrl(videoId, part), { headers: provider.headers })
+    .then(res => res.json());
 
 /**
  * Convert duration ISO 8601 to seconds
