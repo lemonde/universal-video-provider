@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --recursive",
     "babel": "babel src -d lib",
-    "build": "npm run babel",
+    "build": "yarn run babel",
     "release": "node ./node_modules/js-release/cli"
   },
   "repository": {
