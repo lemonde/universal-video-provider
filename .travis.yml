@@ -16,4 +16,4 @@ env:
   global:
   - NODE_ENV=test
 script:
-- npm test
+- yarn test
