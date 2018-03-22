@@ -15,15 +15,21 @@ describe('Digiteka provider', () => {
       });
     });
 
-    it('should extract video id from ultimedia url', () => {
+    it('should extract video id from ultimedia url (1)', () => {
       expect(digiteka.videoIdExtractRegExps[0].exec(
         'http://www.ultimedia.com/default/index/videogeneric/id/5ss8kq'
       )[1]).to.equal('5ss8kq');
     });
 
-    it('should extract video id from digiteka url', () => {
+    it('should extract video id from digiteka url (2)', () => {
       expect(digiteka.videoIdExtractRegExps[1].exec(
         'http://www.digiteka.net/default/index/videogeneric/id/550sru'
+      )[1]).to.equal('550sru');
+    });
+
+    it('should extract video id from digiteka url (3)', () => {
+      expect(digiteka.videoIdExtractRegExps[2].exec(
+        'http://www.ultimedia.com/deliver/generic/iframe/mdtk/01637594/zone/34/src/550sru'
       )[1]).to.equal('550sru');
     });
 
