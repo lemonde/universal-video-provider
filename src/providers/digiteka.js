@@ -57,7 +57,9 @@ const provider = {
     // ex. http://www.ultimedia.com/default/index/videogeneric/id/5ss8kq
     /^(?:https?:)?\/\/(?:www\.)?ultimedia\.com\/default\/index\/videogeneric\/id\/([^?&#/]+)/i,
     // ex. http://www.digiteka.net/default/index/videogeneric/id/550sru
-    /^(?:https?:)?\/\/(?:www\.)?digiteka\.net\/default\/index\/videogeneric\/.*id\/([^?&#/]+)/i
+    /^(?:https?:)?\/\/(?:www\.)?digiteka\.net\/default\/index\/videogeneric\/id\/([^?&#/]+)/i,
+    // ex. http//www.ultimedia.com/deliver/generic/iframe/mdtk/01637594/zone/34/src/5lfqkv
+    /^(?:https?:)?\/\/(?:www\.)?ultimedia\.com\/deliver\/generic\/iframe\/mdtk\/(?:[^?&#/]+)\/zone\/(?:[^?&#/]+)\/src\/([^?&#/]+)/i
   ],
 
   getThumbnailUrl: videoId => (
