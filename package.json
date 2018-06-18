@@ -21,6 +21,7 @@
   "homepage": "https://github.com/lemonde/universal-video-provider#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
