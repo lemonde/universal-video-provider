@@ -71,6 +71,37 @@ videoProvider.extendProvider('digiteka', {
 
 Digiteka provider has a `search` method to require in utlimedia catalog.
 
+Youtube provider has a `search` method to search within youtube library. It returns an Object with 2 keys, one for the token for the next request, the second holds a videos collection matching the criteria:
+
+```js
+// "converge" is you search
+const searcher = () => videoProvider.getProviderFromName('youtube').search(encodeURIComponent('converge'))
+
+searcher().then(data => console.log(data))
+// data is an object which contains all the extracted data
+{ nextPageToken: 'CAUQAA',
+  videos:
+   [ { title: 'Converge - "A Single Tear"',
+       description: 'Listen to the full album: http://bit.ly/2ypxqC7\n"A Single Tear" by Converge from the album The Dusk In Us',
+       thumbnailUrl: 'https://i.ytimg.com/vi/DKqOp2YHfhI/maxresdefault.jpg',
+       playerUrl: '//www.youtube.com/watch?v=DKqOp2YHfhI',
+       duration: '04:06',
+       metadata: { embedCode: '//www.youtube.com/embed/DKqOp2YHfhI' },
+       provider: 'youtube',
+       providerVideoId: 'DKqOp2YHfhI' },
+     { title: 'Converge - "Precipice / All We Love We Leave Behind"',
+       description: '"Precipice / All We Love We Leave Behind" by Converge',
+       thumbnailUrl: 'https://i.ytimg.com/vi/akG2cFldO6I/maxresdefault.jpg',
+       playerUrl: '//www.youtube.com/watch?v=akG2cFldO6I',
+       duration: '06:17',
+       metadata: { embedCode: '//www.youtube.com/embed/akG2cFldO6I' },
+       provider: 'youtube',
+       providerVideoId: 'akG2cFldO6I'
+     }
+   ]
+ }
+```
+
 ## providerVideo API
 
 ### getProviderFromUrl
@@ -90,9 +121,8 @@ Get a video from an url.
 `Return: video object`
 
 ```js
-provider.getVideoFromUrl('http://www.youtube.com/v/ky6CRSBcf98')
-then(video => console.log(video))
-.catch(err => console.error(err));
+provider.getVideoFromUrl('http://www.youtube.com/v/ky6CRSBcf98');
+then(video => console.log(video)).catch(err => console.error(err));
 // video is an object which contains all the extracted data
 ```
 
@@ -104,9 +134,8 @@ Get a video from a provider and a video id.
 
 ```js
 const youtubeProvider = videoProvider.getProviderFromUrl('http://www.youtube.com/v/ky6CRSBcf98');
-provider.getVideoFromId(youtubeProvider, 'ky6CRSBcf98')
-then(video => console.log(video))
-.catch(err => console.error(err));
+provider.getVideoFromId(youtubeProvider, 'ky6CRSBcf98');
+then(video => console.log(video)).catch(err => console.error(err));
 // video is an object which contains all the extracted data
 ```
 
@@ -120,7 +149,7 @@ Return: String
 
 ```js
 const provider = videoProvider.getProviderFromUrl('http://www.youtube.com/v/ky6CRSBcf98');
-const videoId = videoProvider.extractVideoId(provider, 'http://www.youtube.com/v/ky6CRSBcf98')
+const videoId = videoProvider.extractVideoId(provider, 'http://www.youtube.com/v/ky6CRSBcf98');
 // 'ky6CRSBcf98'
 ```
 
@@ -128,9 +157,7 @@ const videoId = videoProvider.extractVideoId(provider, 'http://www.youtube.com/v
 
 Get a specific provider by his name
 
-
 `Return:` [provider Object](https://github.com/lemonde/universal-video-provider#provider-api)
-
 
 ```
 videoProvider.getProviderByName('dailymotion');
@@ -188,9 +215,10 @@ Returns: String
 ```
 
 ```js
-provider.getThumbnailUrl(videoId)
-.then(thumbnailUrl => console.log(thumbnailUrl))
-.catch(err => console.error(err));
+provider
+  .getThumbnailUrl(videoId)
+  .then(thumbnailUrl => console.log(thumbnailUrl))
+  .catch(err => console.error(err));
 ```
 
 ### getTitle
@@ -203,9 +231,10 @@ Returns: String
 ```
 
 ```js
-provider.getTitle(videoId)
-.then(title => console.log(title))
-.catch(err => console.error(err));
+provider
+  .getTitle(videoId)
+  .then(title => console.log(title))
+  .catch(err => console.error(err));
 ```
 
 ### getDescription
@@ -218,9 +247,10 @@ Returns: String
 ```
 
 ```js
-provider.getDescription(videoId)
-.then(description => console.log(description))
-.catch(err => console.error(err));
+provider
+  .getDescription(videoId)
+  .then(description => console.log(description))
+  .catch(err => console.error(err));
 ```
 
 ### getDuration
@@ -233,9 +263,10 @@ Returns: String
 ```
 
 ```js
-provider.getDuration(videoId)
-.then(duration => console.log(duration))
-.catch(err => console.error(err));
+provider
+  .getDuration(videoId)
+  .then(duration => console.log(duration))
+  .catch(err => console.error(err));
 ```
 
 ### getPlayerUrl
@@ -248,9 +279,10 @@ Returns: String
 ```
 
 ```js
-provider.getPlayerUrl(videoId)
-.then(playerUrl => console.log(playerUrl))
-.catch(err => console.error(err));
+provider
+  .getPlayerUrl(videoId)
+  .then(playerUrl => console.log(playerUrl))
+  .catch(err => console.error(err));
 ```
 
 ## How to contribute ?
