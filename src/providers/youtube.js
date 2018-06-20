@@ -18,6 +18,10 @@ const searchUrl = (query, token) => {
     `?part=snippet&type=video&key=${provider.apiKey}` +
     `&q=${query}`;
 
+  if (provider.channelId) {
+    url = `${url}&channelId=${provider.channelId}`;
+  }
+
   if (token) {
     url = `${url}&pageToken=${token}`;
   }
@@ -49,6 +53,7 @@ const provider = {
   label: 'Youtube',
   headers: {},
   apiKey: null,
+  channelId: null,
   videoIdExtractRegExps: [
     // standard url
     // ex. https://www.youtube.com/watch?v=ky6CRSBcf98
