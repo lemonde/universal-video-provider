@@ -29,9 +29,8 @@ const searchUrl = (query, token) => {
   return url;
 };
 
-const fetchVideo = _.memoize((videoId, part) =>
-  fetch(fetchUrl(videoId, part), { headers: provider.headers }).then(res => res.json())
-);
+const fetchVideo = (videoId, part) => fetch(fetchUrl(videoId, part), { headers: provider.headers })
+  .then(res => res.json());
 
 /**
  * Convert duration ISO 8601 to seconds
