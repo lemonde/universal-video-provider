@@ -7,7 +7,8 @@
     "test": "./node_modules/.bin/mocha --recursive",
     "babel": "babel src -d lib",
     "build": "yarn run babel",
-    "release": "node ./node_modules/js-release/cli"
+    "release": "node ./node_modules/js-release/cli",
+    "format": "prettier --write '{src, test}/**/*.js' '*.js'"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "eslint-plugin-import": "^2.18.0",
     "js-release": "^0.5.11",
     "mocha": "^6.1.4",
+    "prettier": "^1.18.2",
     "proxyquire": "^2.1.0",
     "sinon": "^7.3.2"
   },

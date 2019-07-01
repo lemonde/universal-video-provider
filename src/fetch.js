@@ -4,8 +4,8 @@
 try {
   if (fetch) true;
 } catch (err) {
-  require('es6-promise').polyfill();
-  require('isomorphic-fetch');
+  require("es6-promise").polyfill();
+  require("isomorphic-fetch");
 }
 
 module.exports = fetch;
