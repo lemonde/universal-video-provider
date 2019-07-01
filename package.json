@@ -30,7 +30,7 @@
     "js-release": "^0.5.11",
     "mocha": "^6.1.4",
     "proxyquire": "^2.0.1",
-    "sinon": "^4.4.8"
+    "sinon": "^7.3.2"
   },
   "dependencies": {
     "es6-promise": "4.2.4",
