@@ -1,10 +1,10 @@
-const _ = require("lodash");
-const formatter = require("./formatter").video;
-const dailymotion = require("./providers/dailymotion");
-const ina = require("./providers/ina");
-const youtube = require("./providers/youtube");
-const digiteka = require("./providers/digiteka");
-const facebook = require("./providers/facebook");
+const _ = require('lodash');
+const formatter = require('./formatter').video;
+const dailymotion = require('./providers/dailymotion');
+const ina = require('./providers/ina');
+const youtube = require('./providers/youtube');
+const digiteka = require('./providers/digiteka');
+const facebook = require('./providers/facebook');
 
 const providers = [dailymotion, ina, youtube, digiteka, facebook];
 
@@ -27,7 +27,7 @@ function getVideoFromId(provider, videoId) {
     provider.getDuration(videoId),
     provider.getThumbnailUrl(videoId),
     provider.getPlayerUrl(videoId),
-    provider.getEmbedCode(videoId)
+    provider.getEmbedCode(videoId),
   ]).then(
     ([title, description, duration, thumbnailUrl, playerUrl, embedCode]) =>
       formatter(provider.name, videoId, {
@@ -36,7 +36,7 @@ function getVideoFromId(provider, videoId) {
         duration,
         thumbnailUrl,
         playerUrl,
-        embedCode
+        embedCode,
       })
   );
 }
@@ -45,7 +45,7 @@ module.exports.getVideoFromUrl = url => {
   const provider = getProviderFromUrl(url);
 
   if (!provider)
-    return Promise.reject(new Error("Url pattern is not recognized"));
+    return Promise.reject(new Error('Url pattern is not recognized'));
 
   const videoId = extractVideoId(provider, url);
 
@@ -55,7 +55,7 @@ module.exports.getVideoFromUrl = url => {
 module.exports.getProviderFromUrl = getProviderFromUrl;
 module.exports.extractVideoId = extractVideoId;
 module.exports.getVideoFromId = getVideoFromId;
-module.exports.getSupportedProviders = () => _.map(providers, "name");
+module.exports.getSupportedProviders = () => _.map(providers, 'name');
 module.exports.getProviderFromName = name => _.find(providers, { name });
 module.exports.extendProvider = (name, obj) =>
   _.extend(_.find(providers, { name }), obj);

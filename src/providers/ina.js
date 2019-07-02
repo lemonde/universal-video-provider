@@ -1,6 +1,6 @@
-const _ = require("lodash");
-const xml = require("node-xml-lite").parseString;
-const fetch = require("../fetch");
+const _ = require('lodash');
+const xml = require('node-xml-lite').parseString;
+const fetch = require('../fetch');
 
 /**
  * Ina api endpoints
@@ -10,7 +10,7 @@ const getUrl = videoId =>
   `//player.ina.fr/player/ticket/${videoId}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/0/148db8`;
 
 const find = (xmlObj, pathStr) => {
-  const path = pathStr.split(".");
+  const path = pathStr.split('.');
   return walker(xmlObj, path);
 };
 
@@ -24,12 +24,12 @@ const fetchVideo = _.memoize(url =>
 );
 
 const provider = {
-  name: "ina",
-  label: "INA",
+  name: 'ina',
+  label: 'INA',
   headers: {},
   videoIdExtractRegExps: [
     // ex. http://www.ina.fr/video/NA00001285844/monopoly-nantais-video.html
-    /^(?:https?:)?\/\/(?:www\.)?ina\.fr\/video\/([^?&#/]+)/i
+    /^(?:https?:)?\/\/(?:www\.)?ina\.fr\/video\/([^?&#/]+)/i,
   ],
 
   getThumbnailUrl: videoId =>
@@ -39,17 +39,17 @@ const provider = {
 
   getTitle: videoId =>
     fetchVideo(`//player.ina.fr/notices/${videoId}.mrss`).then(
-      result => find(xml(result), "channel.title").childs[0]
+      result => find(xml(result), 'channel.title').childs[0]
     ),
 
   getDescription: videoId =>
     fetchVideo(`//player.ina.fr/notices/${videoId}.mrss`).then(
-      result => find(xml(result), "channel.description").childs[0]
+      result => find(xml(result), 'channel.description').childs[0]
     ),
 
   getDuration: videoId =>
     fetchVideo(`//player.ina.fr/notices/${videoId}.mrss`).then(
-      result => find(xml(result), "channel.item.media:content").attrib.duration
+      result => find(xml(result), 'channel.item.media:content').attrib.duration
     ),
 
   getPlayerUrl: videoId => new Promise(resolve => resolve(getUrl(videoId))),
@@ -58,18 +58,18 @@ const provider = {
     new Promise(resolve =>
       resolve(
         _.compact([
-          "<iframe",
-          _.get(provider, "embed.width")
+          '<iframe',
+          _.get(provider, 'embed.width')
             ? `width="${provider.embed.width}"`
             : null,
-          _.get(provider, "embed.height")
+          _.get(provider, 'embed.height')
             ? `height="${provider.embed.height}"`
             : null,
           'frameborder="0" marginheight ="0" marginwidth="0" scrolling ="no"',
-          `src="${getUrl(videoId)}"></iframe>`
-        ]).join(" ")
+          `src="${getUrl(videoId)}"></iframe>`,
+        ]).join(' ')
       )
-    )
+    ),
 };
 
 module.exports = provider;

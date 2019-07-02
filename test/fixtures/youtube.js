@@ -3,7 +3,7 @@ module.exports.videoOne = {
   etag: '"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/cU-3ioUrBi5YeOn-PynH1XAWxEY"',
   pageInfo: {
     totalResults: 1,
-    resultsPerPage: 1
+    resultsPerPage: 1,
   },
   items: [
     {
@@ -20,28 +20,28 @@ module.exports.videoOne = {
           default: {
             url: 'https://i.ytimg.com/vi/ZjHOLtudKpQ/default.jpg',
             width: 120,
-            height: 90
+            height: 90,
           },
           medium: {
             url: 'https://i.ytimg.com/vi/ZjHOLtudKpQ/mqdefault.jpg',
             width: 320,
-            height: 180
+            height: 180,
           },
           high: {
             url: 'https://i.ytimg.com/vi/ZjHOLtudKpQ/hqdefault.jpg',
             width: 480,
-            height: 360
+            height: 360,
           },
           standard: {
             url: 'https://i.ytimg.com/vi/ZjHOLtudKpQ/sddefault.jpg',
             width: 640,
-            height: 480
+            height: 480,
           },
           maxres: {
             url: 'https://i.ytimg.com/vi/ZjHOLtudKpQ/maxresdefault.jpg',
             width: 1280,
-            height: 720
-          }
+            height: 720,
+          },
         },
         channelTitle: 'CHURCHOFRA C-O-R',
         tags: ['Amenra', 'neurotrecordings', 'churchofra', 'cor', 'massVI'],
@@ -50,8 +50,8 @@ module.exports.videoOne = {
         localized: {
           title: 'Amenra "Children Of The Eye" (official videoclip)',
           description:
-            'Amenra "Children Of The Eye"\n\nDirector: Wim Reygaert\nDOP: Maximiliaan Dierickx\nSculptures: Isabelle De Vos\nArt Direction: Najib De Brackenier\nStyling: Isabelle De Vos\nEdit: Wim Reygaert\nColour grading: Maximiliaan Dierickx\n\n"Children of the eye"\nMASS VI\n\nPreorder now on\nhttp://consouling.be/release/mass-vi\n\nLyrics:\n\nno one ever will leave me behind.I cast no shadow. light is too profound.I am the way. All stars align. a new reign. uncrowned. with wounds adorned, we stand in line. river of blood leads to the shrine.hand in hand, side by side. we look our gods dead in the eye. shaved for burial. soul lost inside. anoint my skin, nothing to hide. I take the first step in the funeral pyre. a fire upon me. reside in me. I am the cold. the barren tree. reside in me.I am the fire no one can oversee. truth fire. not unto me. one tear at a time, you are a threat to mine. flood trenches. dredge remnants of my past. wash away my longing for me to be the last. come rain, wash us all away. here come the first wave, nothing will remain. forever more. no more. too cold to drown in. the deep. allowed in. no more.\n\n\n\nRecorded and mixed by Billy Anderson \nMastered by Justin Weiss\n\nwww.ritualofra.com \nwww.facebook.com/churchofra \nwww.churchofra.com'
-        }
+            'Amenra "Children Of The Eye"\n\nDirector: Wim Reygaert\nDOP: Maximiliaan Dierickx\nSculptures: Isabelle De Vos\nArt Direction: Najib De Brackenier\nStyling: Isabelle De Vos\nEdit: Wim Reygaert\nColour grading: Maximiliaan Dierickx\n\n"Children of the eye"\nMASS VI\n\nPreorder now on\nhttp://consouling.be/release/mass-vi\n\nLyrics:\n\nno one ever will leave me behind.I cast no shadow. light is too profound.I am the way. All stars align. a new reign. uncrowned. with wounds adorned, we stand in line. river of blood leads to the shrine.hand in hand, side by side. we look our gods dead in the eye. shaved for burial. soul lost inside. anoint my skin, nothing to hide. I take the first step in the funeral pyre. a fire upon me. reside in me. I am the cold. the barren tree. reside in me.I am the fire no one can oversee. truth fire. not unto me. one tear at a time, you are a threat to mine. flood trenches. dredge remnants of my past. wash away my longing for me to be the last. come rain, wash us all away. here come the first wave, nothing will remain. forever more. no more. too cold to drown in. the deep. allowed in. no more.\n\n\n\nRecorded and mixed by Billy Anderson \nMastered by Justin Weiss\n\nwww.ritualofra.com \nwww.facebook.com/churchofra \nwww.churchofra.com',
+        },
       },
       contentDetails: {
         duration: 'PT9M42S',
@@ -59,14 +59,14 @@ module.exports.videoOne = {
         definition: 'hd',
         caption: 'false',
         licensedContent: false,
-        projection: 'rectangular'
+        projection: 'rectangular',
       },
       player: {
         embedHtml:
-          '<iframe width="480" height="270" src="//www.youtube.com/embed/8NQt6SSKSik" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
-      }
-    }
-  ]
+          '<iframe width="480" height="270" src="//www.youtube.com/embed/8NQt6SSKSik" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',
+      },
+    },
+  ],
 };
 
 module.exports.videoTwo = {
@@ -74,7 +74,7 @@ module.exports.videoTwo = {
   etag: '"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/gSOD4mbPmKEt8EpnArw9Yemtx-M"',
   pageInfo: {
     totalResults: 1,
-    resultsPerPage: 1
+    resultsPerPage: 1,
   },
   items: [
     {
@@ -91,28 +91,28 @@ module.exports.videoTwo = {
           default: {
             url: 'https://i.ytimg.com/vi/0cTLD3ywchE/default.jpg',
             width: 120,
-            height: 90
+            height: 90,
           },
           medium: {
             url: 'https://i.ytimg.com/vi/0cTLD3ywchE/mqdefault.jpg',
             width: 320,
-            height: 180
+            height: 180,
           },
           high: {
             url: 'https://i.ytimg.com/vi/0cTLD3ywchE/hqdefault.jpg',
             width: 480,
-            height: 360
+            height: 360,
           },
           standard: {
             url: 'https://i.ytimg.com/vi/0cTLD3ywchE/sddefault.jpg',
             width: 640,
-            height: 480
+            height: 480,
           },
           maxres: {
             url: 'https://i.ytimg.com/vi/0cTLD3ywchE/maxresdefault.jpg',
             width: 1280,
-            height: 720
-          }
+            height: 720,
+          },
         },
         channelTitle: 'tgdv1',
         tags: [
@@ -152,15 +152,15 @@ module.exports.videoTwo = {
           'latitudes',
           'intronaut',
           'light bearer',
-          'metal'
+          'metal',
         ],
         categoryId: '10',
         liveBroadcastContent: 'none',
         localized: {
           title: 'Amenra - Mass III (Full Album)',
           description:
-            'The Pain It Is Shapeless 0:00\nNémelèndèlle 10:18\nAm Kreuz 17:46\nLe fils des faux 24:57\nFrom Birth to Grave 32:56\nRitual 38:38\n\nhttp://www.churchofra.com/\nhttp://www.neurotrecordings.com/artists/amenra/amenra.php\nhttps://www.facebook.com/churchofra\nhttp://amenra-official.tumblr.com/'
-        }
+            'The Pain It Is Shapeless 0:00\nNémelèndèlle 10:18\nAm Kreuz 17:46\nLe fils des faux 24:57\nFrom Birth to Grave 32:56\nRitual 38:38\n\nhttp://www.churchofra.com/\nhttp://www.neurotrecordings.com/artists/amenra/amenra.php\nhttps://www.facebook.com/churchofra\nhttp://amenra-official.tumblr.com/',
+        },
       },
       contentDetails: {
         duration: 'PT46M41S',
@@ -168,14 +168,14 @@ module.exports.videoTwo = {
         definition: 'hd',
         caption: 'false',
         licensedContent: false,
-        projection: 'rectangular'
+        projection: 'rectangular',
       },
       player: {
         embedHtml:
-          '<iframe width="480" height="270" src="//www.youtube.com/embed/8NQt6SSKSik" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
-      }
-    }
-  ]
+          '<iframe width="480" height="270" src="//www.youtube.com/embed/8NQt6SSKSik" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>',
+      },
+    },
+  ],
 };
 
 module.exports.search = {
@@ -185,7 +185,7 @@ module.exports.search = {
   regionCode: 'FR',
   pageInfo: {
     totalResults: 22222,
-    resultsPerPage: 5
+    resultsPerPage: 5,
   },
   items: [
     {
@@ -193,7 +193,7 @@ module.exports.search = {
       etag: '"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/yxoi_IrU2Xa8z7vdfqvLebqFi1E"',
       id: {
         kind: 'youtube#video',
-        videoId: 'ZjHOLtudKpQ'
+        videoId: 'ZjHOLtudKpQ',
       },
       snippet: {
         publishedAt: '2017-09-25T19:05:29.000Z',
@@ -205,29 +205,29 @@ module.exports.search = {
           default: {
             url: 'https://i.ytimg.com/vi/ZjHOLtudKpQ/default.jpg',
             width: 120,
-            height: 90
+            height: 90,
           },
           medium: {
             url: 'https://i.ytimg.com/vi/ZjHOLtudKpQ/mqdefault.jpg',
             width: 320,
-            height: 180
+            height: 180,
           },
           high: {
             url: 'https://i.ytimg.com/vi/ZjHOLtudKpQ/hqdefault.jpg',
             width: 480,
-            height: 360
-          }
+            height: 360,
+          },
         },
         channelTitle: 'CHURCHOFRA C-O-R',
-        liveBroadcastContent: 'none'
-      }
+        liveBroadcastContent: 'none',
+      },
     },
     {
       kind: 'youtube#searchResult',
       etag: '"DuHzAJ-eQIiCIp7p4ldoVcVAOeY/jyyHX2ksk31X2_dpOdie-DFRXEo"',
       id: {
         kind: 'youtube#video',
-        videoId: '0cTLD3ywchE'
+        videoId: '0cTLD3ywchE',
       },
       snippet: {
         publishedAt: '2013-03-29T14:36:28.000Z',
@@ -239,22 +239,22 @@ module.exports.search = {
           default: {
             url: 'https://i.ytimg.com/vi/0cTLD3ywchE/default.jpg',
             width: 120,
-            height: 90
+            height: 90,
           },
           medium: {
             url: 'https://i.ytimg.com/vi/0cTLD3ywchE/mqdefault.jpg',
             width: 320,
-            height: 180
+            height: 180,
           },
           high: {
             url: 'https://i.ytimg.com/vi/0cTLD3ywchE/hqdefault.jpg',
             width: 480,
-            height: 360
-          }
+            height: 360,
+          },
         },
         channelTitle: 'tgdv1',
-        liveBroadcastContent: 'none'
-      }
-    }
-  ]
+        liveBroadcastContent: 'none',
+      },
+    },
+  ],
 };
