@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 const fixtures = require('../fixtures/youtube');
@@ -45,8 +45,7 @@ describe('Youtube Provider', () => {
 
   describe('#search', () => {
     const searchData = fixtures.search;
-    const videoOne = fixtures.videoOne;
-    const videoTwo = fixtures.videoTwo;
+    const { videoOne, videoTwo } = fixtures;
 
     before(() => {
       youtube = proxyquire('../../src/providers/youtube', {

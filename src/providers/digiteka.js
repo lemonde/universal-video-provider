@@ -103,6 +103,7 @@ const provider = {
       .then(res => res.json())
       .then(res =>
         _.get(res, 'results', []).map(
+          // eslint-disable-next-line
           ({ video_id, title, description, lengthvideo, image_high, iframe }) =>
             formatter('digiteka', video_id, {
               title,
