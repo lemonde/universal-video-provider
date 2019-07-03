@@ -10,16 +10,14 @@ const providers = [dailymotion, ina, youtube, digiteka, facebook];
 
 function extractVideoId(provider, url) {
   return provider.videoIdExtractRegExps.reduce(
-    (videoId, regexp) => videoId || (regexp.test(url) ? regexp.exec(url)[1] : null),
+    (videoId, regexp) =>
+      videoId || (regexp.test(url) ? regexp.exec(url)[1] : null),
     null
   );
 }
 
 function getProviderFromUrl(url) {
-  return _.find(
-    providers,
-    provider => extractVideoId(provider, url)
-  );
+  return _.find(providers, provider => extractVideoId(provider, url));
 }
 
 function getVideoFromId(provider, videoId) {
@@ -29,17 +27,25 @@ function getVideoFromId(provider, videoId) {
     provider.getDuration(videoId),
     provider.getThumbnailUrl(videoId),
     provider.getPlayerUrl(videoId),
-    provider.getEmbedCode(videoId)
-  ])
-  .then(([title, description, duration, thumbnailUrl, playerUrl, embedCode]) => formatter(
-    provider.name, videoId, { title, description, duration, thumbnailUrl, playerUrl, embedCode }
-  ));
+    provider.getEmbedCode(videoId),
+  ]).then(
+    ([title, description, duration, thumbnailUrl, playerUrl, embedCode]) =>
+      formatter(provider.name, videoId, {
+        title,
+        description,
+        duration,
+        thumbnailUrl,
+        playerUrl,
+        embedCode,
+      })
+  );
 }
 
-module.exports.getVideoFromUrl = (url) => {
+module.exports.getVideoFromUrl = url => {
   const provider = getProviderFromUrl(url);
 
-  if (!provider) return Promise.reject(new Error('Url pattern is not recognized'));
+  if (!provider)
+    return Promise.reject(new Error('Url pattern is not recognized'));
 
   const videoId = extractVideoId(provider, url);
 
@@ -51,8 +57,9 @@ module.exports.extractVideoId = extractVideoId;
 module.exports.getVideoFromId = getVideoFromId;
 module.exports.getSupportedProviders = () => _.map(providers, 'name');
 module.exports.getProviderFromName = name => _.find(providers, { name });
-module.exports.extendProvider = (name, obj) => _.extend(_.find(providers, { name }), obj);
-module.exports.extendProviders = (
-  obj => exports.getSupportedProviders()
-    .map(name => exports.extendProvider(name, obj))
-);
+module.exports.extendProvider = (name, obj) =>
+  _.extend(_.find(providers, { name }), obj);
+module.exports.extendProviders = obj =>
+  exports
+    .getSupportedProviders()
+    .map(name => exports.extendProvider(name, obj));

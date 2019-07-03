@@ -1,11 +1,11 @@
 const moment = require('moment');
 
-const formatDuration = (duration, pattern = 'HH:mm:ss') => (
-  moment.unix(duration)
-  .utc()
-  .format(pattern)
-  .replace(/^00:/, '')
-);
+const formatDuration = (duration, pattern = 'HH:mm:ss') =>
+  moment
+    .unix(duration)
+    .utc()
+    .format(pattern)
+    .replace(/^00:/, '');
 
 const formatVideo = (
   providerName,
