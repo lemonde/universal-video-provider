@@ -16,6 +16,7 @@ describe('Provider', () => {
     getDuration: () => Promise.resolve(55),
     getPlayerUrl: () => Promise.resolve(`${name}:playerUrl`),
     getEmbedCode: () => Promise.resolve(`${name}:embedCode`),
+    getPublishedDate: () => Promise.resolve(`${name}:publishedDate`),
   });
 
   const provider = proxyquire('../src/provider', {
@@ -74,6 +75,7 @@ describe('Provider', () => {
             title: 'dailymotion:title',
             description: 'dailymotion:description',
             duration: '00:55',
+            publishedDate: 'dailymotion:publishedDate',
             thumbnailUrl: 'dailymotion:thumbnailUrl',
             playerUrl: 'dailymotion:playerUrl',
             metadata: { embedCode: 'dailymotion:embedCode' },
@@ -101,6 +103,7 @@ describe('Provider', () => {
             metadata: { embedCode: 'dailymotion:embedCode' },
             provider: 'dailymotion',
             providerVideoId: '10',
+            publishedDate: 'dailymotion:publishedDate',
           });
 
           done();
@@ -121,6 +124,7 @@ describe('Provider', () => {
             metadata: { embedCode: 'youtube:embedCode' },
             provider: 'youtube',
             providerVideoId: '10',
+            publishedDate: 'youtube:publishedDate',
           });
 
           done();

@@ -72,6 +72,7 @@ describe('Youtube Provider', () => {
           expect(videos[0]).to.eql({
             description: videoOneResult.snippet.description,
             duration: '09:42',
+            publishedDate: '2017-09-25T19:05:29.000Z',
             metadata: {
               embedCode: videoOneResult.player.embedHtml,
             },
@@ -84,6 +85,7 @@ describe('Youtube Provider', () => {
           expect(videos[1]).to.eql({
             description: videoTwoResult.snippet.description,
             duration: '46:41',
+            publishedDate: '2013-03-29T14:36:28.000Z',
             metadata: {
               embedCode: videoTwoResult.player.embedHtml,
             },

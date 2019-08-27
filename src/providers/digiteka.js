@@ -79,6 +79,9 @@ const provider = {
   getDuration: videoId =>
     fetchVideo(videoId).then(res => _.get(res, 'results.lengthvideo')),
 
+  getPublishedDate: videoId =>
+    fetchVideo(videoId).then(res => _.get(res, 'results.creation_date')),
+
   getPlayerUrl: videoId =>
     fetchVideo(videoId).then(res =>
       extractPlayerUrl(_.get(res, 'results.iframe'))
@@ -104,11 +107,20 @@ const provider = {
       .then(res =>
         _.get(res, 'results', []).map(
           // eslint-disable-next-line
-          ({ video_id, title, description, lengthvideo, image_high, iframe }) =>
+          ({
+            video_id,
+            title,
+            description,
+            lengthvideo,
+            image_high,
+            creation_date,
+            iframe,
+          }) =>
             formatter('digiteka', video_id, {
               title,
               description,
               duration: lengthvideo,
+              publishedDate: creation_date,
               thumbnailUrl: extractThumbnailUrl(image_high),
               playerUrl: extractPlayerUrl(iframe),
               embedCode: formatEmbedCode(video_id),

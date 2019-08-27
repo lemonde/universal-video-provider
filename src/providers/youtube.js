@@ -80,6 +80,11 @@ const provider = {
       _.get(result, 'items.0.snippet.title')
     ),
 
+  getPublishedDate: videoId =>
+    fetchVideo(videoId, 'snippet').then(result =>
+      _.get(result, 'items.0.snippet.publishedAt')
+    ),
+
   getDescription: videoId =>
     fetchVideo(videoId, 'snippet').then(result =>
       _.get(result, 'items.0.snippet.description')
@@ -127,13 +132,14 @@ const provider = {
         const formattedVideos = res.map(item => {
           const {
             id,
-            snippet: { title, description, thumbnails },
+            snippet: { title, description, thumbnails, publishedAt },
             contentDetails,
             player: { embedHtml },
           } = _.get(item, 'items.0');
           return formatter('youtube', id, {
             title,
             description,
+            publishedDate: publishedAt,
             duration: convertDurationToSc(contentDetails.duration),
             thumbnailUrl:
               _.get(thumbnails, 'maxres.url') || _.get(thumbnails, 'high.url'),

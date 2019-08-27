@@ -28,8 +28,17 @@ function getVideoFromId(provider, videoId) {
     provider.getThumbnailUrl(videoId),
     provider.getPlayerUrl(videoId),
     provider.getEmbedCode(videoId),
+    provider.getPublishedDate(videoId),
   ]).then(
-    ([title, description, duration, thumbnailUrl, playerUrl, embedCode]) =>
+    ([
+      title,
+      description,
+      duration,
+      thumbnailUrl,
+      playerUrl,
+      embedCode,
+      publishedDate,
+    ]) =>
       formatter(provider.name, videoId, {
         title,
         description,
@@ -37,6 +46,7 @@ function getVideoFromId(provider, videoId) {
         thumbnailUrl,
         playerUrl,
         embedCode,
+        publishedDate,
       })
   );
 }
