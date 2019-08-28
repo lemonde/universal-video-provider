@@ -22,6 +22,7 @@ describe('Formatter', () => {
           thumbnailUrl: 'mythumbnailUrl',
           playerUrl: 'myplayerUrl',
           embedCode: 'myembedCode',
+          publishedDate: '2019-07-31T07:15:01.000Z',
         })
       ).to.eql({
         title: 'mytitle',
@@ -32,6 +33,7 @@ describe('Formatter', () => {
         metadata: { embedCode: 'myembedCode' },
         provider: 'digiteka',
         providerVideoId: '123aze',
+        publishedDate: '2019-07-31T07:15:01.000Z',
       });
     });
   });

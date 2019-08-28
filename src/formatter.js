@@ -10,13 +10,22 @@ const formatDuration = (duration, pattern = 'HH:mm:ss') =>
 const formatVideo = (
   providerName,
   videoId,
-  { title, description, duration, thumbnailUrl, playerUrl, embedCode }
+  {
+    title,
+    description,
+    duration,
+    thumbnailUrl,
+    playerUrl,
+    embedCode,
+    publishedDate,
+  }
 ) => ({
   title,
   description,
   thumbnailUrl,
   playerUrl,
   duration: formatDuration(duration),
+  publishedDate,
   metadata: { embedCode },
   provider: providerName,
   providerVideoId: videoId,

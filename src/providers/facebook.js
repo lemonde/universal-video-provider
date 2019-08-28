@@ -51,6 +51,14 @@ const provider = {
         `https://www.facebook.com/plugins/video.php?href=https://www.facebook.com${result.permalink_url}`
     ),
 
+  getPublishedDate: videoId =>
+    fetchVideo(
+      `${BASE_GRAPH_API_URL}${videoId}?access_token=${provider.pageAccessToken}&fields=created_time`
+    ).then(
+      result =>
+        `https://www.facebook.com/plugins/video.php?href=https://www.facebook.com${result.created_time}`
+    ),
+
   getEmbedCode: videoId =>
     provider
       .getPlayerUrl(videoId)

@@ -48,6 +48,11 @@ const provider = {
       `https://api.dailymotion.com/video/${videoId}?fields=duration`
     ).then(result => _.get(result, 'duration')),
 
+  getPublishedDate: videoId =>
+    fetchVideo(
+      `https://api.dailymotion.com/video/${videoId}?fields=created_time`
+    ).then(result => _.get(result, 'created_time')),
+
   getPlayerUrl: videoId => new Promise(resolve => resolve(getUrl(videoId))),
 
   getEmbedCode: videoId =>

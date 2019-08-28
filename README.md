@@ -65,7 +65,7 @@ videoProvider.extendProvider('digiteka', {
   mainCatalog: '5dmpl',
   // When playing a video, this indicates that the video is played
   // in a back-office (to avoid ads, and not count it as a view)
-  zoneId: 34
+  zoneId: 34,
 });
 ```
 
@@ -86,6 +86,7 @@ searcher().then(data => console.log(data))
        thumbnailUrl: 'https://i.ytimg.com/vi/DKqOp2YHfhI/maxresdefault.jpg',
        playerUrl: '//www.youtube.com/watch?v=DKqOp2YHfhI',
        duration: '04:06',
+       pusblishedDate: '2017-09-25T19:05:29.000Z',
        metadata: { embedCode: '//www.youtube.com/embed/DKqOp2YHfhI' },
        provider: 'youtube',
        providerVideoId: 'DKqOp2YHfhI' },
@@ -94,6 +95,7 @@ searcher().then(data => console.log(data))
        thumbnailUrl: 'https://i.ytimg.com/vi/akG2cFldO6I/maxresdefault.jpg',
        playerUrl: '//www.youtube.com/watch?v=akG2cFldO6I',
        duration: '06:17',
+       publishedDate: '2017-09-25T19:05:29.000Z',
        metadata: { embedCode: '//www.youtube.com/embed/akG2cFldO6I' },
        provider: 'youtube',
        providerVideoId: 'akG2cFldO6I'
@@ -111,7 +113,9 @@ Get a specific provider from an url.
 `Return:` [provider Object](https://github.com/lemonde/universal-video-provider#provider-api)
 
 ```js
-const provider = videoProvider.getProviderFromUrl('http://www.youtube.com/v/ky6CRSBcf98');
+const provider = videoProvider.getProviderFromUrl(
+  'http://www.youtube.com/v/ky6CRSBcf98'
+);
 ```
 
 ### getVideoFromUrl
@@ -133,7 +137,9 @@ Get a video from a provider and a video id.
 `Return: video object`
 
 ```js
-const youtubeProvider = videoProvider.getProviderFromUrl('http://www.youtube.com/v/ky6CRSBcf98');
+const youtubeProvider = videoProvider.getProviderFromUrl(
+  'http://www.youtube.com/v/ky6CRSBcf98'
+);
 provider.getVideoFromId(youtubeProvider, 'ky6CRSBcf98');
 then(video => console.log(video)).catch(err => console.error(err));
 // video is an object which contains all the extracted data
@@ -148,8 +154,13 @@ Return: String
 ```
 
 ```js
-const provider = videoProvider.getProviderFromUrl('http://www.youtube.com/v/ky6CRSBcf98');
-const videoId = videoProvider.extractVideoId(provider, 'http://www.youtube.com/v/ky6CRSBcf98');
+const provider = videoProvider.getProviderFromUrl(
+  'http://www.youtube.com/v/ky6CRSBcf98'
+);
+const videoId = videoProvider.extractVideoId(
+  provider,
+  'http://www.youtube.com/v/ky6CRSBcf98'
+);
 // 'ky6CRSBcf98'
 ```
 
@@ -187,7 +198,8 @@ Params: provider name (String), new fields (Object)
 ```js
 videoProvider.extendProvider('vimeo', {
   apiKey: 'myKey',
-  search: terms => fetch(`vimeoUrl/search/?terms=${terms}?apiKey=${this.apiKey}`)
+  search: terms =>
+    fetch(`vimeoUrl/search/?terms=${terms}?apiKey=${this.apiKey}`),
 });
 ```
 
@@ -266,6 +278,22 @@ Returns: String
 provider
   .getDuration(videoId)
   .then(duration => console.log(duration))
+  .catch(err => console.error(err));
+```
+
+### getPublishedDate
+
+Get the publication date of the video.
+
+```
+Params: video id
+Returns: date
+```
+
+```js
+provider
+  .getPublishedDate(videoId)
+  .then(publishedDate => console.log(publishedDate))
   .catch(err => console.error(err));
 ```
 
