@@ -11,7 +11,7 @@ const getUrl = videoId => `//www.youtube.com/embed/${videoId}`;
 const fetchUrl = (videoId, part) =>
   `https://www.googleapis.com/youtube/v3/videos?part=${part}&id=${videoId}&key=${provider.apiKey}`;
 
-const searchUrl = (query, token) => {
+const searchUrl = (query, token, order) => {
   let url;
   url =
     'https://www.googleapis.com/youtube/v3/search' +
@@ -24,6 +24,10 @@ const searchUrl = (query, token) => {
 
   if (token) {
     url = `${url}&pageToken=${token}`;
+  }
+
+  if (order) {
+    url = `${url}&order=${order}`;
   }
 
   return url;
@@ -113,9 +117,9 @@ const provider = {
         ]).join(' ')
       )
     ),
-  search: (query, token) => {
+  search: (query, token, order) => {
     const result = [];
-    return fetch(searchUrl(query, token), {
+    return fetch(searchUrl(query, token, order), {
       timeout: 10000,
       headers: provider.headers,
     })
@@ -135,7 +139,7 @@ const provider = {
             snippet: { title, description, thumbnails, publishedAt },
             contentDetails,
             player: { embedHtml },
-          } = _.get(item, 'items.0');
+          } = _.get(item, 'items.0', {});
           return formatter('youtube', id, {
             title,
             description,
