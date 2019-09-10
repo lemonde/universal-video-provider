@@ -70,11 +70,16 @@ videoProvider.extendProvider('digiteka', {
 ```
 
 Digiteka provider has a `search` method to require in utlimedia catalog.
+Params :
+
+- pattern [required]
+- pageToken (youtube only)
+- order (youtube only)
 
 Youtube provider has a `search` method to search within youtube library. It returns an Object with 2 keys, one for the token for the next request, the second holds a videos collection matching the criteria:
 
 ```js
-// "converge" is you search
+// "converge" is your search
 const searcher = () => videoProvider.getProviderFromName('youtube').search(encodeURIComponent('converge'))
 
 searcher().then(data => console.log(data))
@@ -316,8 +321,8 @@ provider
 ## How to contribute ?
 
 Since `js-release` is included in the project, you can make a release with it:
-See the changelog: `yarn release -- changelog`
-make the release: `yarn release -- add <patch|minor|major>`
+See the changelog: `yarn release changelog`
+make the release: `yarn release add <patch|minor|major>`
 
 This will transpile the sources (`yarn build`) before creating a new release.
 
