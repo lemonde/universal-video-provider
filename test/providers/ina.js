@@ -74,8 +74,18 @@ describe('Ina provider', () => {
       .getPlayerUrl('NA00001285844')
       .then(playerUrl => {
         expect(playerUrl).to.equal(
-          '//player.ina.fr/player/ticket/NA00001285844/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/0/148db8'
+          'https://player.ina.fr/player/embed/NA00001285844/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/wide/0'
         );
+        done();
+      })
+      .catch(done);
+  });
+
+  it('should get published date', done => {
+    ina
+      .getPublishedDate('NA00001285844')
+      .then(publishedDate => {
+        expect(publishedDate).to.equal('Fri, 10 Apr 1970 13:00:07 +0100');
         done();
       })
       .catch(done);
