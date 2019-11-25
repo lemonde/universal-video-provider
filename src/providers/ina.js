@@ -7,7 +7,7 @@ const fetch = require('../fetch');
  */
 
 const getUrl = videoId =>
-  `//player.ina.fr/player/ticket/${videoId}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/0/148db8`;
+  `//player.ina.fr/player/embed/${videoId}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/wide/0`;
 
 const find = (xmlObj, pathStr) => {
   const path = pathStr.split('.');
@@ -53,6 +53,11 @@ const provider = {
     ),
 
   getPlayerUrl: videoId => new Promise(resolve => resolve(getUrl(videoId))),
+
+  getPublishedDate: videoId =>
+    fetchVideo(`//player.ina.fr/notices/${videoId}.mrss`).then(
+      res => find(xml(res), 'channel.pubDate').childs[0]
+    ),
 
   getEmbedCode: videoId =>
     new Promise(resolve =>
