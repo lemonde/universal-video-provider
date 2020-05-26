@@ -1,19 +1,19 @@
 language: node_js
 node_js:
-- 8.9.1
+  - 10.15.0
 sudo: false
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
-    - gcc-4.8
-    - g++-4.8
+      - gcc-4.8
+      - g++-4.8
 before_install:
   # Use GCC 4.8 if it's available
-- 'if [ ! `which gcc-4.8` == "" ]; then export CXX=g++-4.8 && export CC=gcc-4.8; fi'
+  - 'if [ ! `which gcc-4.8` == "" ]; then export CXX=g++-4.8 && export CC=gcc-4.8; fi'
 env:
   global:
-  - NODE_ENV=test
+    - NODE_ENV=test
 script:
-- yarn test
+  - yarn test

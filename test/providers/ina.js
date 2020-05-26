@@ -74,7 +74,7 @@ describe('Ina provider', () => {
       .getPlayerUrl('NA00001285844')
       .then(playerUrl => {
         expect(playerUrl).to.equal(
-          'https://player.ina.fr/player/embed/NA00001285844/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/wide/0'
+          '//player.ina.fr/player/embed/NA00001285844/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/wide/0'
         );
         done();
       })

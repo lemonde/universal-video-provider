@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const moment = require('moment');
 const fetch = require('../fetch');
 const formatter = require('../formatter').video;
 
@@ -41,17 +42,8 @@ const fetchVideo = (videoId, part) =>
 /**
  * Convert duration ISO 8601 to seconds
  */
-const convertDurationToSc = duration => {
-  if (!duration) return 0;
-
-  const parsed = duration
-    .match(/PT([0-9]{1,2}H)?([0-9]{1,2}M)?([0-9]{1,2}S)?/)
-    .map(value => parseInt(value, 10) || 0);
-  // => [0,H,M,S]
-
-  /* eslint-disable no-mixed-operators */
-  return parsed[1] * 3600 + parsed[2] * 60 + parsed[3];
-};
+const convertDurationToSc = (duration = 0) =>
+  moment.duration(duration).asSeconds();
 
 const provider = {
   name: 'youtube',
